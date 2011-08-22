@@ -8,6 +8,8 @@ after sourcing through all this.
 
 ---+ INSTALLATION
 
+Fetch the distribution from: git://github.com/AHinMaine/tcshrc.d.git
+
 From the directory where you downloaded the tcshrc.d distribution, in the
 .tcshrc.d directory, issue the following commands:
 
@@ -18,7 +20,7 @@ From the directory where you downloaded the tcshrc.d distribution, in the
             $ make install-home
 
     Install the tcsh config into the current system's
-    /etc/skel directory, run as root:
+    /etc/skel directory, as root:
 
             # make install-etcskel
 
