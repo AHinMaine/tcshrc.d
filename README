@@ -1,4 +1,162 @@
-This is a more modular attempt at a tcsh configuration.  I've tried 
-to bundle some good defaults, mechanisms for easy distribution via 
-ssh to multiple hosts, as well as an easy way to have os-specific 
-configuration.
+This is a more modular attempt at a tcsh configuration.  I've tried to
+bundle some good defaults, mechanisms for easy distribution via ssh to
+multiple hosts, as well as an easy way to have os-specific configurations.
+I've also tried to make sure the environment isn't unnecessarily polluted
+after sourcing through all this.
+
+
+
+---+ INSTALLATION
+
+From the directory where you downloaded the tcshrc.d distribution, in the
+.tcshrc.d directory, issue the following commands:
+
+
+    Install the tcsh config into the current user's
+    home directory:
+
+            $ make install-home
+
+    Install the tcsh config into the current system's
+    /etc/skel directory, run as root:
+
+            # make install-etcskel
+
+    Run the tcshrc distribution script to copy your
+    tcsh config to remote hosts:
+
+            $ make dist
+
+    Generate the perldoc list for accurate completions
+    when using the perldoc command:
+
+            $ make perldoc
+
+
+
+
+
+(By default, $TCSHDIR is $HOME/.tcshrc/)
+
+
+---+ Directory overview
+
+Config files are sourced as follows:
+
+$TCSHDIR/
+  + Env/
+    + common/
+    + other os/
+  + Paths
+    + common
+    + other os/
+  + Set
+    + common
+    + other os/
+  + Alias
+    + common
+    + other os/
+  + Complete
+    + common
+    + other os/
+  + Keys
+    + common
+    + other os/
+  + Prompts
+    + common
+    + other os/
+  + opt
+
+Other supporting directories
+
+$TCSHDIR/
+  + bin/
+  + etc/
+
+
+
+---+ ENVIRONMENT VARIABLES
+
+To add environment variables, in the $TCSHDIR/Env/ directory, create
+files in the common/ directory, or in the directory of your desired OS.
+These files will be sourced as normal tcsh.
+
+
+
+---+ PATHS
+
+The files in $TCSHDIR/Path/*/ directories are not sourced.  Instead, each
+file is read for directory paths.  Non-directories will not be added to the
+path.
+
+The file $TCSHDIR/Path/.source is then sourced for other path related
+environment variables like LD_LIBRARY_PATH.
+
+
+
+---+ SET
+
+The $TCSHDIR/Set/*/ directories are not always sourced.  Touching files
+will set the corresponding option.  If the file $TCSHDIR/Set/*/autologout
+exists, the autologout option will be set.  However, if the file is
+non-zero in size, it will be sourced as normal tcsh.
+
+
+
+---+ ALIAS
+
+To add aliases, the files in the $TCSHDIR/Alias/*/ directories will be
+sourced as normal tcsh.  Aliases are skipped for non-interactive shells.
+
+
+
+---+ COMPLETE
+
+To add commandline completions, the files in the $TCSHDIR/Complete/*/
+directories will be sourced as normal tcsh.  Completions are skipped for
+non-interactive shells.
+
+
+
+---+ KEYS
+
+To add key bindings, the files in the $TCSHDIR/Keys/*/ directories will
+be sourced as normal tcsh.  Key bindings are skipped for non-interactive
+shells.
+
+
+
+---+ PROMPTS
+
+To configure the tcsh prompts, the files in the $TCSHDIR/Prompts/*/
+directories will be sourced as normal tcsh.  Prompt configs are skipped for
+non-interactive shells.
+
+
+
+---+ OPT
+
+The files in $TCSHDIR/opt/ will be sourced as normal tcsh.
+
+
+
+---+ DISTRIBUTION
+
+To add to the list of distribution hosts, just touch files with names
+corresponding to the hostnames of servers in the $TCSHDIR/etc/.disthosts/
+directory.
+
+The simplist way to distribute files to your hosts:
+
+  $ cd ~/.tcshrc.d
+  $ make dist
+
+To more selectively distribute to a specific host:
+
+  $ tcshrc.dist.sh -H user@otherhost.example.com
+
+(The tcshrc.dist.sh script is a bit over-engineered.  Use -h to read the help.)
+
+
+
+
