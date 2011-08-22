@@ -1,0 +1,4 @@
+This is a more modular attempt at a tcsh configuration.  I've tried 
+to bundle some good defaults, mechanisms for easy distribution via 
+ssh to multiple hosts, as well as an easy way to have os-specific 
+configuration.
