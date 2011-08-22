@@ -1,0 +1,7 @@
+complete mv		c/--/"(backup force interactive update verbose suffix \
+                version-control help version)"/ \
+                c/-/"(b f i S u V v -)"/ \
+                n/{-S,--suffix}/x:'<suffix>'/ \
+                n/{-V,--version-control}/"(t numbered nil existing \
+                never simple)"/ n/-/f/ N/-/d/ p/1/f/ p/2/d/ n/*/f/
+

@@ -1,0 +1,6 @@
+    complete kldunload 'c/-/(i v)/' \
+            'n/-i/`kldstat | awk \{print\$1\} | egrep -v \(Id\|1\)`/' \
+            'p/*/`kldstat | awk \{print\$5\} | egrep -v \(Name\|kernel\)`/'
+
+    complete kldload 'p@*@`ls -1 /boot/kernel | sed -e "s/\(.*\).ko/\1/"`@' 
+

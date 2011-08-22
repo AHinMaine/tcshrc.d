@@ -1,0 +1,14 @@
+    # common
+    complete ndc                    n/*/'( \
+                                            dumpdb \
+                                            notrace \
+                                            querylog \
+                                            reload \
+                                            restart \
+                                            start \
+                                            stats \
+                                            status \
+                                            stop \
+                                            trace \
+                                        )'/
+

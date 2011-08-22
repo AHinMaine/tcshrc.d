@@ -1,0 +1,1 @@
+    complete dhclient 'n/-/`ifconfig -l`/' 'p/1/`ifconfig -l`/'

@@ -1,0 +1,22 @@
+#complete setenv	'p/1/e/' 'c/*:/f/'
+
+if ( $?TERM ) then
+
+    set _terminfo_dir = "/usr/share/terminfo"
+
+    if ( -d $_terminfo_dir ) then
+
+    set TERM_complete =   (  n@TERM@'`\find /usr/share/terminfo -type f | awk -F\/ \{print\ \$NF\} | sort | column -x`'@ )
+        if ( -r /etc/shells ) then
+            complete setenv	p@1@e@ n@DISPLAY@\$hosts@: n@SHELL@'`cat /etc/shells`'@ "${TERM_complete}"
+        else
+            complete setenv	p@1@e@ n@DISPLAY@\$hosts@: 'c/*:/f/'
+        endif
+
+    endif
+
+
+endif
+
+if ( $?TERM_complete ) unset TERM_complete
+if ( $?_terminfo_dir ) unset _terminfo_dir

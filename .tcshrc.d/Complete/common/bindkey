@@ -1,0 +1,8 @@
+    complete bindkey                N/-a/b/ N/-c/c/ \
+                                    n/-[ascr]/'x:<key-sequence>'/ \
+                                    n/-[svedlr]/n/ \
+                                    c/-[vedl]/n/ \
+                                    c/-/"(a s k c v e d l r)"/\
+                                    n/-k/"(left right up down)"/ \
+                                    p/2-/b/ \
+                                    p/1/'x:<key-sequence or option>'/

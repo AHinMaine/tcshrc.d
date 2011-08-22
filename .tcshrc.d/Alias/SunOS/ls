@@ -1,0 +1,8 @@
+set _GLS = ( `which gls` ) >& /dev/null
+if ( $? != 0 || ! -x "${_GLS}" ) unset _GLS
+
+if ( $?LS_COLORS && $?_GLS ) then
+    alias ls 	'gls --color=always'
+endif
+
+if ( $?_GLS ) unset _GLS

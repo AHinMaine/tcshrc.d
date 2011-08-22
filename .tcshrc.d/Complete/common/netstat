@@ -1,0 +1,1 @@
+complete netstat	'n@-I@`ifconfig -l`@'

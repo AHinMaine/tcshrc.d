@@ -1,0 +1,3 @@
+    complete rm                     c/--/"(directory force interactive verbose recursive help version)"/ \
+                                    c/-/"(d f i v r R -)"/ \
+                                    n/*/f:^*.{c,cc,C,h,in}/

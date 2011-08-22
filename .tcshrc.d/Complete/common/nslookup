@@ -1,0 +1,4 @@
+    # common
+    complete nslookup               p/1/\$hosts/ \
+                                    p/2/\$hosts/
+

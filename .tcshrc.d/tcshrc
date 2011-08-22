@@ -1,0 +1,80 @@
+unalias cwdcmd
+
+set TCSHDIR = ( "${userHOME}/.tcshrc.d" )
+
+if ( ! -d "${TCSHDIR}" ) then
+    echo "No tcshrc.d directory found..."
+    exit 1
+else
+    setenv TCSHDIR ${TCSHDIR}
+endif
+
+set _UNAME = ( `which tcpdump` ) >& /dev/null
+if ( $? != 0 || ! -x "${_UNAME}" ) unset _UNAME
+
+if ( $?_UNAME ) then
+    set tcshOS = ( `${_UNAME} -s` )
+else
+    echo "Error detecting operating system (uname -s)"
+    exit 1
+endif
+
+if ( $?_UNAME ) unset _UNAME
+
+# If touch file .tcshrc.debug exists, go ahead and turn on
+# debug mode
+#
+if ( -f "${userHOME}/.tcshrc.debug" ) then
+    set debugON = ( "TRUE" )
+    echo -n "debug is now ON"
+endif
+
+
+# Loop through these configuration directories
+#
+
+foreach ConfDir \
+(               \
+    Env         \
+    Paths       \
+    Set         \
+    Alias       \
+    Complete    \
+    Keys        \
+    Prompts     \
+    opt         \
+)
+
+    if ( $?debugON ) then
+        echo "Testing ConfDir: ${TCSHDIR}/$ConfDir"
+    endif
+
+    if ( -d "${TCSHDIR}/${ConfDir}" ) then
+
+        set current = ( "${TCSHDIR}/${ConfDir}/.rc" )
+
+        if ( $?debugON ) then
+            echo "Testing LoadFile: ${current}"
+        endif
+
+        if ( -f "${current}" && -r "${current}" ) then
+
+            if ( $?debugON ) then
+                echo "source ${current}"
+            endif
+
+            source ${current}
+
+        else
+            echo "Current item not found or not readable: ${current}"
+        endif
+
+    endif
+
+end
+
+if ( $?ConfDir ) unset ConfDir
+if ( $?current ) unset current
+
+# vim: ft=tcsh et ts=4 sts=4 sw=4
+

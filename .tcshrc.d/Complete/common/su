@@ -1,0 +1,5 @@
+    complete su                     c/--/"(login fast preserve-environment command shell help version)"/ \
+                                    c/-/"(f H l m p c s -)"/ \
+                                    n/{-c,--command}/c/ \
+                                    n@{-s,--shell}@'`cat /etc/shells`'@ \
+                                    n/*/u/

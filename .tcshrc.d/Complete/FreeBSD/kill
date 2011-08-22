@@ -1,0 +1,2 @@
+    complete kill 'c/-/S/' 'p/*/`ps -x | grep -v PID | awk \{print\$1\}`/'
+    complete killall 'c/-/S/' 'p/*/c/'

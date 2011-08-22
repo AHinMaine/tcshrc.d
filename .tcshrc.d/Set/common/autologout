@@ -1,0 +1,2 @@
+unset autologout
+set autologout=0

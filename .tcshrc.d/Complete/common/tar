@@ -1,0 +1,40 @@
+    # common gnu
+    complete tar                    'c/-[Acru]*/(b B C f F g G h i l L M N o P R S T v V w W X z Z)/' \
+                                    'c/-[dtx]*/( B C f F g G i k K m M O p P R s S T v w x X z Z)/' \
+                                    p/1/'( \
+                                            A c d r t u x -A -c -d -r -t -u -x \
+                                            --catenate --concatenate --create --diff --compare \
+                                            --delete --append --list --update --extract --get \
+                                            --help --version \
+                                        )'/ \
+                                    c/--/'( \
+                                            catenate concatenate create diff compare \
+                                            delete append list update extract get atime-preserve \
+                                            block-size read-full-blocks directory checkpoint file \
+                                            force-local info-script new-volume-script incremental \
+                                            listed-incremental dereference ignore-zeros \
+                                            ignore-failed-read keep-old-files starting-file \
+                                            one-file-system tape-length modification-time \
+                                            multi-volume after-date newer old-archive portability \
+                                            to-stdout same-permissions preserve-permissions \
+                                            absolute-paths preserve record-number remove-files \
+                                            same-order preserve-order same-owner sparse \
+                                            files-from null totals verbose label version \
+                                            interactive confirmation verify exclude exclude-from \
+                                            compress uncompress gzip ungzip use-compress-program \
+                                            block-compress help version \
+                                        )'/ \
+                                    c/-/'(b B C f F g G h i k K l L m M N o O p P R s S T v V w W X z Z 0 1 2 3 4 5 6 7 -)'/ \
+                                    C@[/dev]@f@ \
+                                    'n/-c*f/x:<new_tar_file, device_file, or "-">/' \
+                                    'n/{-[Adrtux]*f,--file}/f:*.{tar,taz,tgz}/' \
+                                    'N/{-x*f,--file}/`tar -tf $:-1`/' \
+                                    n/--use-compress-program/c/ \
+                                    n/{-b,--block-size}/x:'<block_size>'/ \
+                                    n/{-V,--label}/x:'<volume_label>'/ \
+                                    n/{-N,--{after-date,newer}}/x:'<date>'/ \
+                                    n/{-L,--tape-length}/x:'<tape_length_in_kB>'/ \
+                                    n/{-C,--directory}/d/ \
+                                    N/{-C,--directory}/'`\ls $:-1`'/ \
+                                    n/-[0-7]/"(l m h)"/
+

@@ -1,0 +1,9 @@
+    complete gzip	c/--/"(stdout to-stdout decompress uncompress \
+			force help list license no-name quiet recurse \
+			suffix test verbose version fast best)"/ \
+			c/-/"(c d f h l L n q r S t v V 1 2 3 4 5 6 7 8 9 -)"/\
+			n/{-S,--suffix}/x:'<file_name_suffix>'/ \
+			n/{-d,--{de,un}compress}/f:*.{gz,Z,z,zip,taz,tgz}/ \
+			N/{-d,--{de,un}compress}/f:*.{gz,Z,z,zip,taz,tgz}/ \
+			n/*/f:^*.{gz,Z,z,zip,taz,tgz}/
+

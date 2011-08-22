@@ -1,0 +1,4 @@
+    complete mysqladmin	'n/*/(create drop extended-status flush-hosts \
+			flush-logs flush-status flush-tables flush-privileges \
+			kill password ping processlist reload refresh \
+			shutdown status variables version)/'

@@ -1,0 +1,4 @@
+complete zgrep	c/-*A/x:'<#_lines_after>'/ c/-*B/x:'<#_lines_before>'/\
+			c/-/"(A b B c C e f h i l n s v V w x)"/ \
+			p/1/x:'<limited_regular_expression>'/ N/-*e/f/ \
+			n/-*e/x:'<limited_regular_expression>'/ n/-*f/f/ n/*/f/

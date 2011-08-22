@@ -1,0 +1,5 @@
+complete screen     'c/-/(d list r wipe x)/'                                                \
+                    'n/-d/`screen -list | grep Attached | cut -f 2`/'                       \
+                    'n/-r/`screen -list | grep Detached | cut -f 2`/'                       \
+                    'n/-wipe/`screen -list | grep Dead | cut -f 2`/'                        \
+                    'n/-x/`screen -list | grep "^ " | egrep "(At|De)tached" | cut -f 2`/'

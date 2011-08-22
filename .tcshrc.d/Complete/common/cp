@@ -1,0 +1,8 @@
+complete cp		c/--/"(archive backup no-dereference force \
+    			interactive link preserve parents sparse recursive \
+                symbolic-link suffix update verbose version-control \
+                one-file-system help version)"/ \
+                c/-/"(a b d f i l P p R r S s u V v x -)"/ \
+                n/-*r/d/ n/{-S,--suffix}/x:'<suffix>'/ \
+                n/{-V,--version-control}/"(t numbered nil existing \
+                never simple)"/ n/-/f/ N/-/d/ p/1/f/ p/2/d/ n/*/f/

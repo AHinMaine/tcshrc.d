@@ -1,0 +1,4 @@
+    complete postmap                'n/1/(hash: regexp:)' \
+                                    'c/hash:/f/' \
+                                    'c/regexp:/f/'
+

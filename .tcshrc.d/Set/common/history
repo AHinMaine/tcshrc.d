@@ -1,0 +1,24 @@
+# This is the history of each individual shell.  It defines
+# only the size and it usefull when invoking previous
+# commands.
+unset history
+set history=5000
+
+# Make sure that there is no logging of the session.
+# Privacy issues and it was mentioned that logging makes slow the logout
+#unset histfile
+
+set savehist = (5000 merge)
+
+history -M
+
+# Every # seconds, do 'command'.  set tperiod = 2 alias
+# periodic 'tput bel'
+
+#unset tperiod
+#unalias periodic
+
+set tperiod=240
+alias periodic 'history -S && echo history saved...'
+
+

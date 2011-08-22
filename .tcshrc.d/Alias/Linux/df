@@ -1,0 +1,10 @@
+set _ALIGN = ( `which align` ) >& /dev/null
+if ( $? != 0 || ! -x "${_ALIGN}" ) unset _ALIGN
+
+if ( $?_ALIGN ) then
+    alias dfhp 'df -hP | align'
+else
+    alias dfhp 'df -hP'
+endif
+
+if ( $?_ALIGN ) unset _ALIGN

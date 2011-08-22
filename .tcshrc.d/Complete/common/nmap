@@ -1,0 +1,1 @@
+complete nmap	'n@-e@`ifconfig -l`@' 'p/*/$hosts/'

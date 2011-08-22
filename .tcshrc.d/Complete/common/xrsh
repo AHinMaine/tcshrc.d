@@ -1,0 +1,9 @@
+    # common
+    complete xrsh                   p/1/\$hosts/ \
+                                    c/-/"(l 8 e)"/ \
+                                    n/-l/u/ \
+                                    N/-l/c/ \
+                                    n/-/c/ \
+                                    p/2/c/ \
+                                   'p/*/f/'
+

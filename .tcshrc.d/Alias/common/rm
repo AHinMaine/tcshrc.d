@@ -1,0 +1,2 @@
+alias del   	'rm -i'
+alias rd    	'rmdir'

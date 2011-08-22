@@ -1,0 +1,13 @@
+# The tcpdump line is nice to see what traffic goes on the network
+# -s 2000  means to grab all the packet (max is about 1500, but anyway..)
+# -n  means do not resolve names. Makes it faster and lightweight.
+# -i eth0  means only the Ethernet interface. In some distros, the loopback is
+# shown too which clutters the output.
+set _TCPDUMP = ( `which tcpdump` ) >& /dev/null
+if ( $? != 0 || ! -x "${_TCPDUMP}" ) unset _TCPDUMP
+
+if ( $?_TCPDUMP ) then
+    alias log_tcpdump 'clear ; exec tcpdump -s 2000 -n -i $*'
+endif
+
+if ( $?_TCPDUMP ) unset _TCPDUMP

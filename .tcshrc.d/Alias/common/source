@@ -1,0 +1,1 @@
+alias rc        "pushd $HOME ; source .tcshrc ; popd"

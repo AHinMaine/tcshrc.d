@@ -1,0 +1,25 @@
+
+    if ( -f "${TCSHDIR}/etc/podlist.txt" ) then
+        set podcomplete = ( 'n@*@`\cat '${TCSHDIR}/etc/podlist.txt'`@' )
+    else
+
+        foreach d ( /usr/perl5 /usr/lib/perl5 /usr/local/perl5 /usr/local/lib/perl5 /mc/apps/perl/lib )
+            if ( -d $d ) then
+                set podcomplete=( 'n@*@`\ls -1 '$d'/5.*/pod | sed s%\\.pod.\*\$%%`@' )
+                break
+            endif
+        end
+        unset d
+
+        if ( -z "$podcomplete" ) then
+            set podcomplete=( 'n@*@`\ls -1 /usr/lib/perl5/5.*/pod | sed s%\\.pod.\*\$%%`@' )
+        endif
+
+    endif
+
+   #complete perldoc    'n@*@`\ls -1 /usr/lib/perl5/5.*/pod | sed s%\\.pod.\*\$%%`@'
+    complete perldoc    "${podcomplete}"
+
+if ( $?podcomplete ) unset podcomplete
+
+# vim: set et ff=unix ft=tcsh sts=0 sw=4 ts=4 : 

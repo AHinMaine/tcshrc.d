@@ -1,0 +1,22 @@
+
+if ( -d /usr/share/terminfo ) then
+    set terminfo_complete = (  n@*@'`\find /usr/share/terminfo -type f | awk -F\/ \{print\ \$NF\} | sort | column -x`'@ )
+    set tput_complete =     (  c@-T@'`\find /usr/share/terminfo -type f | awk -F\/ \{print\ \$NF\} | sort | column -x`'@ )
+endif
+
+if ( -d /usr/share/lib/terminfo ) then
+    set terminfo_complete = (  n@*@'`\find /usr/share/lib/terminfo -type f | awk -F\/ \{print\ \$NF\} | sort | pr -5 -t`'@ )
+    set tput_complete =     (  c@-T@'`\find /usr/share/lib/terminfo -type f | awk -F\/ \{print\ \$NF\} | sort | pr -5 -t`'@ )
+endif
+
+if ( $?terminfo_complete ) then
+    complete infocmp    "${terminfo_complete}" 
+    complete tack       "${terminfo_complete}"
+    complete tput       "${tput_complete}" 'n@*@(longname init reset)@'
+endif
+
+if ( $?terminfo_complete ) unset terminfo_complete
+if ( $?tput_complete     ) unset tput_complete
+
+# vim: set et ff=unix ft=tcsh sts=4 sw=4 ts=4 : 
+

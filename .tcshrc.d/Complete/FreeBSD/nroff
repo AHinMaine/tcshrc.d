@@ -1,0 +1,1 @@
+    complete nroff  'c/-m/(doc an)/' 'p/*/f:*.[1-9]/'

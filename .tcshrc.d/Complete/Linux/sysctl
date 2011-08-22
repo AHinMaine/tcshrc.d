@@ -1,0 +1,1 @@
+complete sysctl     'p/*/`sysctl -N -a`/'

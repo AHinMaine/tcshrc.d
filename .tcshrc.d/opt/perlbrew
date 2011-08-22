@@ -1,0 +1,42 @@
+
+# {{{  Perl stuff...
+#
+if ( $?isInteractive ) then
+
+    set env_perlbrew = ( "${HOME}/perl5/perlbrew/etc/cshrc" )
+
+    if ( -f "${env_perlbrew}" ) then
+
+        echo "Found perlbrew environment config..."
+
+        source "${env_perlbrew}"
+
+        set _PERLBREW = ( `which perlbrew` ) >& /dev/null
+        if ( $? != 0 || ! -x "${_PERLBREW}" ) unset _PERLBREW
+
+        if ( $?_PERLBREW ) then
+            perlbrew switch
+        else
+            echo "...but no perlbrew binary found..."
+        endif
+
+    endif
+
+    set _CPANM = ( `which cpanm` ) >& /dev/null
+    if ( $? != 0 || ! -x "${_CPANM}" ) unset _CPANM
+
+    if ( $?_CPANM ) then
+        echo "Found ${_CPANM}..."
+        setenv PERL_CPANM_OPT '--mirror http://mirror.metrocast.net/cpan/'
+    endif
+
+endif
+
+
+
+# }}}
+
+if ( $?_PERLBREW ) unset _PERLBREW
+if ( $?_CPANM    ) unset _CPANM
+
+# vim: set et ff=unix ft=tcsh sts=4 sw=4 ts=4 : 

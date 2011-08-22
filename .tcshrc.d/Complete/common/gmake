@@ -1,0 +1,13 @@
+    complete gmake	'c/{--directory=,--include-dir=}/d/' \
+			'c/{--assume-new,--assume-old,--makefile,--new-file,--what-if,--file}/f/' \
+			'c/--/(assume-new= assume-old= debug directory= \
+			dry-run environment-overrides file= help \
+			ignore-errors include-dir= jobs[=N] just-print \
+			keep-going load-average[=N] makefile= max-load[=N] \
+			new-file= no-builtin-rules no-keep-going \
+			no-print-directory old-file= print-data-base \
+			print-directory question quiet recon silent stop \
+			touch version warn-undefined-variables what-if=)/' \
+			'n@*@`cat -s GNUMakefile Makefile makefile |& sed -n -e "/No such file/d" -e "s/^\([A-Za-z0-9-]*\):.*/\1/p"`@' \
+			'n/=/f/' 'n/-f/f/'
+

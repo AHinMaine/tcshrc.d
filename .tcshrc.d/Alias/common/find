@@ -1,0 +1,3 @@
+# Quite handy, type "ff test.c" to find "test.c". 
+# Keep in mind that there is also "locate test.c" which is faster.
+alias ff    	'find . -name $*'

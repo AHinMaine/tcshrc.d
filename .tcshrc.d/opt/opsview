@@ -1,0 +1,21 @@
+
+if ( -f /usr/local/nagios/bin/profile ) then
+
+    echo Loading opsview nagios environment...
+
+    if ( -d /usr/local/nagios          ) setenv OPSVIEW_BASE /usr/local/nagios
+    if ( -d $OPSVIEW_BASE/perl/lib     ) setenv PERL5LIB $OPSVIEW_BASE/perl/lib
+    if ( -f $OPSVIEW_BASE/.perltidyrc  ) setenv PERLTIDY $OPSVIEW_BASE/.perltidyrc
+
+    if ( -d $OPSVIEW_BASE/bin          ) set -f path = ( $OPSVIEW_BASE/bin $path )
+    if ( -d $OPSVIEW_BASE/perl/bin     ) set -f path = ( $OPSVIEW_BASE/perl/bin $path )
+    if ( -d /usr/local/opsview-web/bin ) set -f path = ( /usr/local/opsview-web/bin $path )
+
+    if ( $?isInteractive ) then
+        alias cdn "cd $OPSVIEW_BASE"
+        alias cdw "cd /usr/local/opsview-web"
+    endif
+
+endif
+
+# vim: set et ff=unix ft=tcsh sts=4 sw=4 ts=4 : 

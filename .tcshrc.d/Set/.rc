@@ -1,0 +1,134 @@
+set myDir = ( "${TCSHDIR}/Set" )
+
+cd ${myDir}
+
+if ( $?noglob ) then
+    set noglobON = 1
+endif
+
+# {{{ common tcsh settings
+
+if ( -d "common" && -r "common" ) then
+
+    if ( $?noglob ) then
+        unset noglob
+    endif
+
+    if ( $?debugON ) then
+        echo "Fetching common path files begin..."
+    endif
+
+    set CommonSetFiles = ( common/* )
+
+    if ( $?debugON ) then
+        echo "Fetching common path files end..."
+    endif
+
+
+    if ( $?noglobON ) then
+        set noglob
+    endif
+
+endif
+
+if ( $?CommonSetFiles ) then
+    set SetFiles = ( "${CommonSetFiles}" )
+else
+    set SetFiles
+endif
+
+# }}}
+
+# {{{ os specific tcsh settings
+# 
+# Read in the filenames containing tcsh settings specific to
+# the current operating system
+#
+if ( $?tcshOS && -d "${tcshOS}" && -r "${tcshOS}" ) then
+
+    if ( $?noglob ) then
+        unset noglob
+    endif
+
+    if ( $?debugON ) then
+        echo "Fetching os path files begin..."
+        echo -n "PWD: "
+        pwd
+    endif
+
+    set osSetFiles = ( ${tcshOS}/* )
+
+    if ( $?debugON ) then
+        echo "Fetching os path files end..."
+    endif
+
+
+
+    if ( $?noglobON ) then
+        set noglob
+    endif
+
+endif
+
+if ( $?osSetFiles ) then
+    set -l SetFiles = ( ${osSetFiles} ${SetFiles} )
+endif
+
+if ( $?debugON ) then
+    echo "SetFiles = ${SetFiles}"
+endif
+
+# }}}
+
+# {{{ iterate and source the settings files
+
+if ( $?SetFiles ) then
+
+    foreach curSetFile ( $SetFiles )
+
+        if ( $?debugON ) then
+            echo curSetFile: $curSetFile
+        endif
+
+        if ( -r ${curSetFile} ) then
+
+            if ( -s "${curSetFile}" ) then
+                source ${curSetFile}
+            else
+                set setter = ( $curSetFile:t )
+
+                if ( $?debugON ) then
+                    echo setter: $setter
+                endif
+
+                if ( $setter != "empty" ) then
+                    set ${setter}
+                endif
+
+            endif
+
+        endif
+
+    end
+
+else
+    echo "ERROR: No settings files found"
+endif
+
+# }}}
+
+if ( $?noglobON ) then
+    set noglob
+endif
+
+if ( $?CommonSetFiles ) unset CommonSetFiles
+if ( $?osSetFiles     ) unset osSetFiles
+if ( $?curSetFile     ) unset curSetFile
+if ( $?SetFiles       ) unset SetFiles
+if ( $?setter         ) unset setter
+if ( $?myDir          ) unset myDir
+
+cd -
+
+# vim: ft=tcsh et ts=4 sts=4 sw=4
+

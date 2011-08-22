@@ -1,0 +1,2 @@
+complete chmod	c/--/"(changes silent quiet verbose reference \
+    			recursive help version)"/ c/-/"(c f R v)"/

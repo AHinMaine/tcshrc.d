@@ -1,0 +1,4 @@
+complete chown	c/--/"(changes dereference no-dereference silent \
+    			quiet reference recursive verbose help version)"/ \
+                c/-/"(c f h R v -)"/ C@[./\$~]@f@ c/*[.:]/g/ \
+                n/-/u/: p/1/u/: n/*/f/

@@ -1,0 +1,3 @@
+complete chgrp	c/--/"(changes no-dereference silent quiet reference \
+    			recursive verbose help version)"/ \
+                c/-/"(c f h R v -)"/ n/-/g/ p/1/g/ n/*/f/

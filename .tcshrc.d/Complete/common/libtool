@@ -1,0 +1,3 @@
+complete libtool	'c/--mode=/(compile execute finish install link \
+			uninstall)/' 'c/--/(config debug dry-run features \
+			finish help quiet silent version mode=)/'

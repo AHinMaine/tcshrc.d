@@ -1,0 +1,29 @@
+    # common
+     complete dd                     c/--/"(help version)"/ \
+                                    c/[io]f=/f/ \
+                                    c/conv=*,/'( \
+                                                        ascii	    ebcdic \
+                                                        ibm		    block \
+                                                        unblock	    lcase \
+                                                        notrunc	    ucase \
+                                                        swab	    noerror \
+                                                        sync \
+                                        )'/,\
+                                    c/conv=/'( \
+                                                        ascii	    block \
+                                                        ebcdic	    ibm \
+                                                        lcase	    noerror \
+                                                        notrunc	    swab \
+                                                        sync	    ucase \
+                                                        unblock \
+                                        )'/, \
+                                    c/*=/x:'<number>'/ \
+                                    n/*/'( \
+                                                        if		    of \
+                                                        conv	    ibs \
+                                                        obs		    bs \
+                                                        cbs		    files \
+                                                        skip	    file \
+                                                        seek	    count \
+                                        )'/=
+

@@ -1,0 +1,44 @@
+# {{{ Prompts
+
+# Define new prompt.
+# Basic prompt.      (do a 'man tcsh' to get more about the flags)
+# This shows the current path in inverse color and that is nice.
+# It is important to know all the time in what directory you are.
+#   explanation: %B begin bold, %b end bold, %S begin inverse, %s end inverse
+#   explanation: %m short system name, %/ full directory name, %# is # or %
+#   explanation: depending if you are root or non-root.
+
+if ( $?TERM ) then
+
+    if ( "${user}" == "root" ) then
+        set rgb_usr  = "${boldon}${redb}${whitef}"
+        set rgb_hash = "${reset}${boldon}${redf}"
+    else
+        set rgb_usr  = "${reset}${boldon}${greenf}"
+        set rgb_hash = "${reset}${boldon}${cyanf}"
+    endif
+
+    if ( ${?DISPLAY} ) then
+        set prompt_display = ( "${DISPLAY}" )
+    else
+        set prompt_display = ( "_" )
+    endif
+
+    set prompt = "${reset}${greenf}[${TERM}]${boldon}${yellowf}[${prompt_display}]${reset}${greenf}(%h)${boldon}${greenf}[%@ ${mytz}]${reset} ${rgb_hash}%#${reset} "
+    set rprompt="${reset}${greenf}[${reset}${rgb_usr}%n${reset}${cyanf}@${reset}${boldon}${greenf}%M:%B%~%b${reset}]"
+
+    # Prompt used when waiting for stufffor 'for' or 'while'...
+    set prompt2="%R?"
+
+    # Prompt used when correcting.
+    # Correct????
+    # 	y: yes, n: no, e: edit
+    # 	<SPACE>: yes
+    # 	<ENTER>: no
+    set prompt3="CORRECT> %B%R%b (y|n|e)?"
+
+endif
+
+# }}}
+
+# vim: set et ff=unix ft=tcsh sts=4 sw=4 ts=4 : 

@@ -1,0 +1,6 @@
+    complete {gunzip,ungzip} c/--/"(stdout to-stdout force help list license \
+			no-name quiet recurse suffix test verbose version)"/ \
+			c/-/"(c f h l L n q r S t v V -)"/ \
+			n/{-S,--suffix}/x:'<file_name_suffix>'/ \
+			n/*/f:*.{gz,Z,z,zip,taz,tgz}/
+

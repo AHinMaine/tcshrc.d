@@ -1,0 +1,10 @@
+set _ZYPPER = ( `which zypper` ) >& /dev/null
+if ( $? != 0 || ! -x "${_ZYPPER}" ) unset _ZYPPER
+
+if ( $?_ZYPPER ) then
+    alias zypper "sudo /usr/bin/nice -n '-20' zypper "
+endif
+
+if ( $?_ZYPPER ) unset _ZYPPER
+
+# vim: set et ff=unix ft=tcsh sts=4 sw=4 ts=4 : 

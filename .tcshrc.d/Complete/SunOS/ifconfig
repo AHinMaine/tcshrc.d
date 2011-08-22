@@ -1,0 +1,3 @@
+complete ifconfig 'c/-/(a d u m)/' 'n/-/`ifconfig -a | egrep "^[a-zA-Z]" | awk -F: \{print\$1\}`/' 'p/1/`ifconfig -a | egrep "^[a-zA-Z]" | awk -F: \{print\$1\}`/'
+
+

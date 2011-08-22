@@ -1,0 +1,5 @@
+    complete mkdir                  c/--/"(mode parents verbose help version)"/ \
+                                    c/-/"(p m -)"/ \
+                                    n/{-m,--mode}/x:'<mode>'/ \
+                                    n/*/d/
+

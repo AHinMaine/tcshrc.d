@@ -1,0 +1,6 @@
+# Put the following on a free console and leave it there.
+# Even when the logs are circulating, it will carry on.  If
+# someone kills this process, it automatically exits due to
+# the "exec".
+alias log_messages 'clear; exec tail -f /var/log/messages --follow=name --retry'
+

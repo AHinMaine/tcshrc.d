@@ -1,0 +1,3 @@
+complete cat	c/--/"(number-nonblank number squeeze-blank show-all \
+                show-nonprinting show-ends show-tabs help version)"/ \
+                c/-/"(A b E e n s T t u v -)"/ n/*/f/

@@ -1,0 +1,10 @@
+# these from E. Jay Berkenbilt <ejb@ERA.COM>
+# = isn't always followed by a filename or a path anymore - jgotts
+
+    complete ./configure \
+            'c@--{prefix,exec-prefix,bindir,sbindir,libexecdir,datadir,sysconfdir,sharedstatedir,localstatedir,infodir,mandir,srcdir,x-includes,x-libraries}=*@x:<directory e.g. /usr/local>@' \
+ 			'c/--cachefile=*/x:<filename>/' \
+  			'c/--{enable,disable,with}-*/x:<feature>//' \
+ 			'c/--*=/x:<directory>//' \
+  			'c/--/(prefix= exec-prefix= bindir= sbindir= libexecdir= datadir= sysconfdir= sharedstatedir= localstatedir= infodir= mandir= srcdir= x-includes= x-libraries= cachefile= enable- disable- with- help no-create quiet silent version verbose )//'
+

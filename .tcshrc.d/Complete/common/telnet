@@ -1,0 +1,5 @@
+    # common
+    complete telnet                 p/1/\$hosts/ \
+                                    p/2/x:'<port>'/ \
+                                   'n/*/n/'
+

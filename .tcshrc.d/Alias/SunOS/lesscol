@@ -1,0 +1,5 @@
+if ( $?PAGER ) then
+    alias lesscol " col -x -b | ${PAGER} "
+else
+    alias lesscol " col -x -b "
+endif

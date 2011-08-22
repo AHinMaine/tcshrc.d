@@ -1,0 +1,11 @@
+# This is another way to get RFCs nicely. Just do "rfcget 1234" 
+# to get the appropriate RFC. Needs the ncftp package.
+
+set ENSCRIPT = ( `which enscript` ) >& /dev/null
+if ( $? != 0 || ! -x "${ENSCRIPT}" ) unset ENSCRIPT
+
+if ( $?ENSCRIPT ) then
+    alias rfcget 'ncftpget ftp://ftp.isi.edu/in-notes/rfc\!^.txt' 
+endif
+
+if ( $?ENSCRIPT ) unset ENSCRIPT

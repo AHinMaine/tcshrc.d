@@ -1,0 +1,1 @@
+complete dhclient   'n/-/`ifconfig | egrep "^[a-zA-Z]" | awk \{print\$1\}`/' 'p/1/`ifconfig | egrep "^[a-zA-Z]" | awk \{print\$1\}`/'

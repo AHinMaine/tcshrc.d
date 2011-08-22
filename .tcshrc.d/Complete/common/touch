@@ -1,0 +1,7 @@
+    complete touch                  c/--/"(date reference time help version)"/ \
+                                    c/-/"(a c d f m r t -)"/ \
+                                    n/{-d,--date}/x:'<date_string>'/ \
+                                    c/--time/"(access atime mtime modify use)"/ \
+                                    n/{-r,--file}/f/ \
+                                    n/-t/x:'<time_stamp>'/ \
+                                    n/*/f/

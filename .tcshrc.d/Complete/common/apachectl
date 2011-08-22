@@ -1,0 +1,1 @@
+complete apachectl c/*/'(start stop restart fullstatus status graceful configtest help)'/

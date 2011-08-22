@@ -1,0 +1,25 @@
+    # common
+    complete rndc                   n/*/'( \
+                                            dumpdb \
+                                            flush \
+                                            flushname \
+                                            freeze \
+                                            notrace \
+                                            querylog \
+                                            reconfig \
+                                            recursing \
+                                            reload \
+                                            restart \
+                                            retransfer \
+                                            refresh \
+                                            start \
+                                            stats \
+                                            status \
+                                            stop \
+                                            thaw \
+                                            trace \
+                                        )'/ \
+                                    'n@reload@zone@' \
+                                    'n@refresh@zone@' \
+                                    'n@retransfer@zone@'
+

@@ -1,0 +1,53 @@
+# {{{ Define colors
+
+# Below are the color init strings for the basic file types.
+# A color init string consists of one or more of the
+# following numeric codes:
+
+#|Attribute codes:|Text color codes:|Background color codes:|
+#|00=none         |30=black         |40=black               |
+#|01=bold         |31=red           |41=red                 |
+#|04=underscore   |32=green         |42=green               |
+#|05=blink        |33=yellow        |43=yellow              |
+#|07=reverse      |34=blue          |44=blue                |
+#|08=concealed    |35=magenta       |45=magenta             |
+#|                |36=cyan          |46=cyan                |
+#|                |37=white         |47=white               |
+
+
+set color
+set colorcat
+
+set esc='\033['
+
+set blackf='%{\033[30m%}'
+set redf='%{\033[31m%}'
+set greenf='%{\033[32m%}'
+set yellowf='%{\033[33m%}'
+set bluef='%{\033[34m%}'
+set purplef='%{\033[35m%}'
+set cyanf='%{\033[36m%}'
+set whitef='%{\033[37m%}'
+
+set blackb='%{\033[40m%}'
+set redb='%{\033[41m%}'
+set greenb='%{\033[42m%}'
+set yellowb='%{\033[43m%}'
+set blueb='%{\033[44m%}'
+set purpleb='%{\033[45m%}'
+set cyanb='%{\033[46m%}'
+set whiteb='%{\033[47m%}'
+
+set boldon='%{\033[1m%}'
+set boldoff='%{\033[22m%}'
+set italicson='%{\033[3m%}'
+set italicsoff='%{\033[23m%}'
+set ulon='%{\033[4m%}'
+set uloff='%{\033[24m%}'
+set invon='%{\033[7m%}'
+set invoff='%{\033[27m%}'
+
+set reset='%{\033[0m%}'
+
+# }}}
+

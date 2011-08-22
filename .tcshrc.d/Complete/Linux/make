@@ -1,0 +1,1 @@
+complete make       'p@*@`perl -ne '"'"'if (/^([^.\$#][^:]+):/) {print "$1 "}'"'"' Makefile`@'

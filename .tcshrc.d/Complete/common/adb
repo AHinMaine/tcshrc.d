@@ -1,0 +1,7 @@
+    # common
+    complete adb                    c/-I/d/ \
+                                    n/-/c/ \
+                                    N/-/"(core)"/ \
+                                    p/1/c/ \
+                                    p/2/"(core)"/
+

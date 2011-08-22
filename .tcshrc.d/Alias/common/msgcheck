@@ -1,0 +1,6 @@
+# This erases the backup files from emacs, vi (if enabled) and others.
+# It is disabled by default.
+#alias clean 'rm -f  *~'
+# This is useful to translators checking .po files.
+alias msgcheck 'msgfmt -o /dev/null --statistics --strict --verbose'
+

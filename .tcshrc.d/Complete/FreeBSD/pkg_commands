@@ -1,0 +1,16 @@
+if ( $?PKG_DBDIR ) then
+    complete pkg_create "n@-b@D:$PKG_DBDIR@@"
+    complete pkg_deinstall "p@*@D:$PKG_DBDIR@@"
+    complete pkg_fetch 'p@*@`ls $PKG_DBDIR | sed "s,\(.*\)-.*,\1," `@@'
+    complete pkg_which "c@*@D:$PKG_DBDIR@@" "o@*@D:$PKG_DBDIR@@"
+    complete pkgdb "c@*@D:$PKG_DBDIR@@" "o@*@D:$PKG_DBDIR@@"
+endif
+
+if ( $?PORTSDIR ) then
+    complete portinstall "p@*@D:$PORTSDIR@"
+    complete ports_glob "p@*@D:$PORTSDIR@"
+    complete portupgrade "n@-o@D:$PORTSDIR@" "p@*@D:$PKG_DBDIR@@"
+    complete portversion "p@*@D:$PKG_DBDIR@@"
+endif
+
+# vim: set et ff=unix ft=tcsh sts=4 sw=4 ts=4 : 

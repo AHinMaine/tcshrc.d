@@ -1,0 +1,4 @@
+# shut off core dumps
+limit coredumpsize 0k
+
+

@@ -1,0 +1,5 @@
+    # common
+    complete rlogin                 p/1/\$hosts/ \
+                                    c/-/"(l 8 e)"/ \
+                                    n/-l/u/
+

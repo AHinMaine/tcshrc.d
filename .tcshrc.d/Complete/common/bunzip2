@@ -1,0 +1,1 @@
+complete bunzip2	'p/*/f:*.bz2/' 

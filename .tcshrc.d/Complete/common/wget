@@ -1,0 +1,203 @@
+
+# {{{ wget
+
+
+    foreach word ( \
+                    --background \
+                    --continue \
+                    --convert-links \
+                    --debug \
+                    --delete-after \
+                    --dont-remove-listing \
+                    --follow-ftp \
+                    --force-directories \
+                    --force-html \
+                    --help \
+                    --ignore-length \
+                    --mirror \
+                    --no-clobber \
+                    --no-directories \
+                    --no-host-directories \
+                    --no-host-lookup \
+                    --no-parent \
+                    --non-verbose \
+                    --passive-ftp \
+                    --quiet \
+                    --recursive \
+                    --relative \
+                    --retr-symlinks \
+                    --save-headers \
+                    --server-response \
+                    --span-hosts \
+                    --spider \
+                    --timestamping \
+                    --verbose \
+                    --version \
+                 )
+        if ( ! ${?wgetwords} ) then
+            set wgetwords_comma = ( ${word} )
+            set wgetwords       = ( ${word} )
+        else
+            set wgetwords_comma = ( ${wgetwords_comma}","${word} )
+            set wgetwords       = ( ${wgetwords} ${word} )
+        endif
+
+    end
+
+    foreach word ( \
+                    accept \
+                    append-output \
+                    cache \
+                    cut-dirs \
+                    directory-prefix \
+                    domains \
+                    dot-style \
+                    exclude-directories \
+                    exclude-domains \
+                    execute \
+                    glob \
+                    header \
+                    http-passwd \
+                    http-user \
+                    include-directories \
+                    input-file \
+                    level \
+                    output-document \
+                    output-file \
+                    proxy-passwd \
+                    proxy-user \
+                    proxy \
+                    quiet \
+                    quota \
+                    reject \
+                    timeout \
+                    tries \
+                    user-agent \
+                    wait \
+                 )
+
+        if ( ! ${?wgeteqwords} ) then
+            set wgeteqwords       = ( ${word}"=" )
+            set wgeteqwords_comma = ( ${word} )
+        else
+            set wgeteqwords_comma = (  ${wgeteqwords_comma}","${word} )
+            set wgeteqwords       = (  ${wgeteqwords} ${word}"=" )
+        endif
+
+    end
+
+    set wget_all_words       = ( $wgetwords $wgeteqwords )
+
+    set wget_eq_Complete     = ( 'C@--{'$wgeteqwords_comma'}@$wgeteqwords@=@' )
+    set wget_eq_msg_Complete = ( 'c@--{'$wgeteqwords_comma'}=*@x:<parameter>@' )
+   #set wget_eq_Complete     = ( 'c@--@('$wgeteqwords')@@' )
+
+
+   #set wget_Complete        = ( 'c@{'$wgetwords_comma','$wgeteqwords_comma'}@x:<test2>@' )
+    set wget_Complete        = ( 'C@{'$wgetwords_comma'}@$wgetwords@' )
+    set wget_Complete_all    = ( 'c@*@$wget_all_words@' )
+
+   #echo
+   #echo
+   #echo "completing wget: ${wget_eq_msg_Complete}"
+   #echo
+   #echo "completing wget: ${wget_eq_Complete}"
+   #echo
+   #echo "completing wget: ${wget_Complete}"
+   #echo
+   #echo
+   #echo
+   #echo
+
+#   complete wget                   \
+#   "${wget_eq_Complete}"           \
+
+    set space = ' '
+    complete wget 'c/--/(execute foobar)/' 'n/*/(--execute)/='
+        
+#   "${wget_eq_msg_Complete}"       \
+#"${wget_Complete}" "${wget_Complete_all}"
+    
+#\ 
+
+#   complete wget                  "c/--{${wgeteqwords}}/(=)//"
+    
+   # \ c/*/"(${wgetwords})"/
+
+
+
+
+
+#   complete wget                   c/--/"(accept= \
+#                                               append-output= \
+#                                               background \
+#                                               cache= \
+#                                               continue \
+#                                               convert-links \
+#                                               cut-dirs= \
+#                                               debug \
+#                                               delete-after \
+#                                               directory-prefix= \
+#                                               domains= \
+#                                               dont-remove-listing \
+#                                               dot-style= \
+#                                               exclude-directories= \
+#                                               exclude-domains= \
+#                                               execute= \
+#                                               follow-ftp \
+#                                               force-directories \
+#                                               force-html \
+#                                               glob= \
+#                                               header= \
+#                                               help \
+#                                               http-passwd= \
+#                                               http-user= \
+#                                               ignore-length \
+#                                               include-directories= \
+#                                               input-file= \
+#                                               level= \
+#                                               mirror \
+#                                               no-clobber \
+#                                               no-directories \
+#                                               no-host-directories \
+#                                               no-host-lookup \
+#                                               no-parent \
+#                                               non-verbose \
+#                                               output-document= \
+#                                               output-file= \
+#                                               passive-ftp \
+#                                               proxy-passwd= \
+#                                               proxy-user= \
+#                                               proxy= \
+#                                               quiet \
+#                                               quota= \
+#                                               recursive \
+#                                               reject= \
+#                                               relative \
+#                                               retr-symlinks \
+#                                               save-headers \
+#                                               server-response \
+#                                               span-hosts \
+#                                               spider \
+#                                               timeout= \
+#                                               timestamping \
+#                                               tries= \
+#                                               user-agent= \
+#                                               verbose \
+#                                               version \
+#                                               wait=  \
+#                                           )"/
+
+# }}}
+
+if ( $?wget_all_words       ) unset wget_all_words
+if ( $?wget_Complete        ) unset wget_Complete
+if ( $?wget_Complete_all    ) unset wget_Complete_all
+if ( $?wget_eq_Complete     ) unset wget_eq_Complete
+if ( $?wget_eq_msg_Complete ) unset wget_eq_msg_Complete
+if ( $?wgeteqwords          ) unset wgeteqwords
+if ( $?wgeteqwords_comma    ) unset wgeteqwords_comma
+if ( $?wgetwords            ) unset wgetwords
+if ( $?wgetwords_comma      ) unset wgetwords_comma
+
+# vim: set et ff=unix ft=tcsh sts=0 sw=4 ts=4 : 

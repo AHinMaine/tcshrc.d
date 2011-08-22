@@ -1,0 +1,9 @@
+    complete cvs                    'c/--/(help help-commands help-synonyms)/' \
+                                    'p/1/(add admin annotate checkout commit diff \
+                                    edit editors export history import init log login \
+                                    logout rdiff release remove rtag status tag unedit \
+                                    update watch watchers)/' \
+                                    'n/-a/(edit unedit commit \
+                                    all none)/' \
+                                    'n/watch/(on off add remove)/'
+

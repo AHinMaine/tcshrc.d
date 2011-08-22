@@ -1,0 +1,9 @@
+    # common
+    complete ssh                    p/1/\$hosts/ \
+                                    c/-/"(l n)"/ \
+                                    n/-l/u/ \
+                                    N/-l/c/ \
+                                    n/-/c/ \
+                                    p/2/c/ \
+                                   'p/*/f/'
+

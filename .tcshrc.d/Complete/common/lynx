@@ -1,0 +1,23 @@
+    # common
+    complete lynx                   'c/-/( \
+                                            accept_all_cookies anonymous assume_charset= \
+                                            assume_local_charset= assume_unrec_charset= auth= base \
+                                            book buried_news cache= case cfg= child cookie_file= \
+                                            cookies core crawl debug_partial display= dump editor= \
+                                            emacskeys enable_scrollback error_file= force_html \
+                                            force_secure forms_options from ftp get_data head help \
+                                            hiddenlinks= historical homepage= image_links index= \
+                                            ismap link= localhost mime_header minimal \
+                                            newschunksize= newsmaxchunk= nobrowse nocc nocolor \
+                                            nofilereferer nolist nolog nopause noprint noredir \
+                                            noreferer nostatus number_links partial partial_thres \
+                                            pauth= popup post_data preparsed print pseudo_inlines \
+                                            raw realm reload restrictions= resubmit_posts rlogin \
+                                            selective show_cursor soft_dquotes source stack_dump \
+                                            startfile_ok tagsoup telnet term= tlog trace traversal \
+                                            underscore useragent= validate verbose version vikeys \
+                                            width= \
+                                        )/' \
+                                    'c/(http|ftp)/$URLS/' \
+                                    p/*/f:*.{html,htm,shtml}/
+

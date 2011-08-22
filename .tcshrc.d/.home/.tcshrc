@@ -1,0 +1,35 @@
+
+# {{{ get Windows out of the way first...
+#
+
+if ( $?OS ) then
+    if ( $OS == "Windows_NT" ) then
+        set winSource = ( "${HOME}/.tcshrc.d/WIN32" )
+        if ( -d "${winSource}" ) then
+            source ${winSource}/*
+            exit
+        endif
+    endif
+endif
+
+# }}}
+
+if ( $?prompt3 ) then
+    set isInteractive = 1
+endif
+
+set GETENT = ( `which getent` ) >& /dev/null
+if ( $? != 0 || ! -x "${GETENT}" ) unset GETENT
+
+set tcshOS = ( `uname -s` )
+
+if ( ! $?userHOME ) then
+    setenv userHOME ${HOME}
+endif
+
+source $userHOME/.tcshrc.d/tcshrc
+
+if( $?isInteractive ) unset isInteractive
+
+
+# vim: set et ff=unix ft=tcsh sts=4 sw=4 ts=4 : 

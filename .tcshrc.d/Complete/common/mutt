@@ -1,0 +1,17 @@
+
+set _muttrc = ( "${HOME}/.muttrc-alias" )
+
+if ( -r $_muttrc ) then
+
+    complete mutt                   c@-f=@F:${HOME}/Mail/@ \
+                                    n/-a/f/ \
+                                    n/-F/f/ \
+                                    n/-H/f/ \
+                                    n/-s/x:'<subject line>'/ \
+                                    n/-e/x:'<command>'/ \
+                                    n@-b@'`cat ${HOME}/.muttrc-alias | awk '"'"'{print $2 }'"'"\`@ \
+                                    n@-c@'`cat ${HOME}/.muttrc-alias | awk '"'"'{print $2 }'"'"\`@ \
+                                    n@*@'`cat ${HOME}/.muttrc-alias | awk '"'"'{print $2 }'"'"\`@
+endif
+
+if ( $?_muttrc ) unset _muttrc

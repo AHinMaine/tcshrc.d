@@ -1,0 +1,7 @@
+alias ll    'ls -lart'
+alias dir   'ls -la'
+
+if ( $?LESSDEFAULT ) then
+    alias pdir  'dir | less'
+    alias pls   'ls -la | less'
+endif

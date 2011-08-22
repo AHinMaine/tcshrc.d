@@ -1,0 +1,105 @@
+if ( $?isInteractive ) then
+
+    set myDir = ( "${TCSHDIR}/Prompts" )
+
+    cd ${myDir}
+
+    if ( $?noglob ) then
+        set noglobON = 1
+    endif
+
+    # {{{ common prompts
+
+    if ( -d "common" && -r "common" ) then
+
+        if ( $?noglob ) then
+            unset noglob
+        endif
+
+        set CommonPromptFiles = ( common/* )
+
+        if ( $?noglobON ) then
+            set noglob
+        endif
+
+    endif
+
+    if ( $?CommonPromptFiles ) then
+        set PromptFiles = ( "${CommonPromptFiles}" )
+    else
+        set PromptFiles
+    endif
+
+    # }}}
+
+    # {{{ os specific prompts
+    #
+    # Read in the filenames containing prompts specific to the
+    # current operating system
+    #
+    if ( $?tcshOS && -d "${tcshOS}" && -r "${tcshOS}" ) then
+
+        if ( $?noglob ) then
+            unset noglob
+        endif
+
+        set osPromptFiles = ( ${tcshOS}/* )
+
+        if ( $?noglobON ) then
+            set noglob
+        endif
+
+    endif
+
+    if ( $?osPromptFiles ) then
+        set -l PromptFiles = ( ${osPromptFiles} ${PromptFiles} )
+    endif
+
+    if ( $?debugON ) then
+        echo "PromptFiles = ${PromptFiles}"
+    endif
+
+    # }}}
+
+    # {{{ iterate prompt files
+
+    if ( $?PromptFiles ) then
+
+        foreach curPromptFile ( $PromptFiles )
+
+            if ( $?debugON ) then
+                echo curPromptFile: $curPromptFile
+            endif
+
+            if ( -r ${curPromptFile} ) then
+
+                if ( -s ${curPromptFile} ) then
+                    source ${curPromptFile}
+                endif
+
+            endif
+
+        end
+
+    else
+        echo "ERROR: No prompt files found"
+    endif
+
+    # }}}
+
+    cd -
+
+    if ( $?noglobON ) then
+        set noglob
+    endif
+
+    if ( $?CommonPromptFiles ) unset CommonPromptFiles
+    if ( $?osPromptFiles     ) unset osPromptFiles
+    if ( $?curPromptFile     ) unset curPromptFile
+    if ( $?PromptFiles       ) unset PromptFiles
+    if ( $?myDir             ) unset myDir
+
+endif
+
+# vim: ft=tcsh et ts=4 sts=4 sw=4
+

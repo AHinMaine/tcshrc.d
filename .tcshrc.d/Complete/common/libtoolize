@@ -1,0 +1,2 @@
+    complete libtoolize	'c/--/(automake copy debug dry-run force help ltdl \
+			ltdl-tar version)/'

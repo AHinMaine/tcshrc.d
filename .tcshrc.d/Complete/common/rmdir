@@ -1,0 +1,3 @@
+complete rmdir	c/--/"(ignore-fail-on-non-empty parents verbose help \
+    			version)"/ c/-/"(p -)"/ n/*/d/
+

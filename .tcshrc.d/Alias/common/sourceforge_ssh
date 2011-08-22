@@ -1,0 +1,5 @@
+# If you are on Sourceforge, this may be handy. Also try RSA authentication
+# so that you do not need to put a password to connect. It is also handy with
+# "scp".
+# You can run it as "shell1 -l my_username" without modifying the following.
+alias shell1 'slogin -x shell1.sourceforge.net -l CHANGE_WITH_YOUR_USERNAME_IN_.tcshrc.alias'

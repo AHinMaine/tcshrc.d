@@ -1,0 +1,5 @@
+complete du		c/--/"(all block-size bytes total dereference-args \
+                human-readable si kilobytes count-links dereference \
+                megabytes separate-dirs summarize one-file-system \
+                exclude-from exclude max-depth help version"/ \
+                c/-/"(a b c D H h k L l m S s X x)"/

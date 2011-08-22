@@ -1,0 +1,60 @@
+set myDir = ( "${TCSHDIR}/opt" )
+
+cd ${myDir}
+
+if ( $?noglob ) then
+    set noglobON = 1
+endif
+
+# {{{ opt files
+#
+if ( $?noglob ) then
+    unset noglob
+endif
+
+set optFiles = ( * )
+
+if ( $?noglobON ) then
+    set noglob
+endif
+
+if ( $?debugON ) then
+    echo "optFiles = ${optFiles}"
+endif
+
+# }}}
+
+# {{{ iterate opt files
+
+if ( $?optFiles ) then
+
+    foreach curoptFile ( $optFiles )
+
+        if ( $?debugON ) then
+            echo curoptFile: $curoptFile
+        endif
+
+        if ( -r ${curoptFile} ) then
+            if ( -s ${curoptFile} ) then
+                source ${curoptFile}
+            endif
+        endif
+
+    end
+
+endif
+
+# }}}
+
+if ( $?noglobON ) then
+    set noglob
+endif
+
+if ( $?optFiles         ) unset optFiles
+if ( $?curoptFile       ) unset curoptFile
+if ( $?myDir            ) unset myDir
+
+cd -
+
+# vim: set et ft=tcsh sts=4 sw=4 ts=4 : 
+

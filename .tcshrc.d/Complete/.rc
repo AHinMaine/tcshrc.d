@@ -1,0 +1,115 @@
+if ( $?isInteractive ) then
+
+    set myDir = ( "${TCSHDIR}/Complete" )
+
+    # Completions are skipped if we're not running in a terminal
+    #
+
+    cd ${myDir}
+
+    if ( $?noglob ) then
+        set noglobON = 1
+    endif
+
+    # {{{ common completes
+
+    if ( -d "common" && -r "common" ) then
+
+        if ( $?noglob ) then
+            unset noglob
+        endif
+
+        set CommonCompleteFiles = ( common/* )
+
+        if ( $?noglobON ) then
+            set noglob
+        endif
+
+    endif
+
+    if ( $?CommonCompleteFiles ) then
+        set CompleteFiles = ( "${CommonCompleteFiles}" )
+    else
+        set CompleteFiles
+    endif
+
+    # }}}
+
+    # {{{ os completions
+    # 
+    # Read in the filenames containing completions specific
+    # to the current operating system
+    #
+    if ( $?tcshOS && -d "${tcshOS}" && -r "${tcshOS}" ) then
+
+        if ( $?noglob ) then
+            unset noglob
+        endif
+
+        set osCompleteFiles = ( ${tcshOS}/* )
+
+        if ( $?noglobON ) then
+            set noglob
+        endif
+
+    endif
+
+    if ( $?osCompleteFiles ) then
+        set -l CompleteFiles = ( ${osCompleteFiles} ${CompleteFiles} )
+    endif
+
+    if ( $?debugON ) then
+        echo "CompleteFiles = ${CompleteFiles}"
+    endif
+
+    # }}}
+
+    # {{{ iterate completion files
+
+
+    if ( $?CompleteFiles ) then
+
+        set noglob
+
+        foreach curCompleteFile ( $CompleteFiles )
+
+            if ( $?debugON ) then
+                echo curCompleteFile: $curCompleteFile
+            endif
+
+            if ( -r ${curCompleteFile} ) then
+
+                if ( -s ${curCompleteFile} ) then
+                    source ${curCompleteFile}
+                endif
+
+            endif
+
+        end
+
+        unset noglob
+
+    else
+        echo "ERROR: No Completion files found"
+    endif
+
+    # }}}
+
+    endif
+
+    if ( $?noglobON ) then
+        set noglob
+    endif
+
+    cd -
+
+    if ( $?CommonCompleteFiles ) unset CommonCompleteFiles
+    if ( $?osCompleteFiles     ) unset osCompleteFiles
+    if ( $?curCompleteFile     ) unset curCompleteFile
+    if ( $?CompleteFiles       ) unset CompleteFiles
+    if ( $?myDir               ) unset myDir
+
+endif
+
+# vim: ft=tcsh et ts=4 sts=4 sw=4
+

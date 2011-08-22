@@ -1,0 +1,104 @@
+if ( $?isInteractive ) then
+
+    set myDir = ( "${TCSHDIR}/Alias" )
+
+    cd ${myDir}
+
+    if ( $?noglob ) then
+        set noglobON = 1
+    endif
+
+
+    # {{{ common aliases
+
+    if ( -d "common" && -r "common" ) then
+
+        if ( $?noglob ) then
+            unset noglob
+        endif
+
+        set CommonAliasFiles = ( common/* )
+
+        if ( $?noglobON ) then
+            set noglob
+        endif
+
+    endif
+
+    if ( $?CommonAliasFiles ) then
+        set AliasFiles = ( "${CommonAliasFiles}" )
+    else
+        set AliasFiles
+    endif
+
+    # }}}
+
+    # {{{ os aliases
+    # 
+    # Read in the filenames containing aliases specific to
+    # the current operating system
+    #
+    if ( $?tcshOS && -d "${tcshOS}" && -r "${tcshOS}" ) then
+
+        if ( $?noglob ) then
+            unset noglob
+        endif
+
+        set osAliasFiles = ( ${tcshOS}/* )
+
+        if ( $?noglobON ) then
+            set noglob
+        endif
+
+    endif
+
+    if ( $?osAliasFiles ) then
+        set -l AliasFiles = ( ${osAliasFiles} ${AliasFiles} )
+    endif
+
+    if ( $?debugON ) then
+        echo "AliasFiles = ${AliasFiles}"
+    endif
+
+    # }}}
+
+    # {{{ iterate alias files
+
+    if ( $?AliasFiles ) then
+
+        foreach curAliasFile ( $AliasFiles )
+
+            if ( $?debugON ) then
+                echo curAliasFile: $curAliasFile
+            endif
+
+            if ( -r ${curAliasFile} ) then
+                if ( -s ${curAliasFile} ) then
+                    source ${curAliasFile}
+                endif
+            endif
+
+        end
+
+    else
+        echo "ERROR: No alias files found"
+    endif
+
+    # }}}
+
+    if ( $?noglobON ) then
+        set noglob
+    endif
+
+    if ( $?CommonAliasFiles ) unset CommonAliasFiles
+    if ( $?osAliasFiles     ) unset osAliasFiles
+    if ( $?curAliasFile     ) unset curAliasFile
+    if ( $?AliasFiles       ) unset AliasFiles
+    if ( $?myDir            ) unset myDir
+
+    cd -
+
+endif
+
+# vim: set et ft=tcsh sts=4 sw=4 ts=4 : 
+

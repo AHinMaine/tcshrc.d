@@ -1,0 +1,4 @@
+complete df		c/--/"(all block-size human-readable si inodes \
+                kilobytes local megabytes no-sync portability sync \
+                type print-type exclude-type help version)"/ \
+                c/-/"(a H h i k l m P T t v x)"/

@@ -1,0 +1,6 @@
+set grepnc_expr = "'^[^#]'"
+#alias grepnc " grep ${grepnc_expr} "
+alias grepnc  " grep ${grepnc_expr} "
+alias sgrepnc " sudo grep ${grepnc_expr} "
+#alias pg      'pcregrep --color=always '
+alias gvg     ' grep -v grep '

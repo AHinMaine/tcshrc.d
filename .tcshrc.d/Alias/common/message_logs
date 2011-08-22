@@ -1,0 +1,14 @@
+# As in "Message Less", use it on a free terminal to see the logs as they come.
+set messages_log
+if ( -r "/var/log/messages" )  then
+    set messages_log = ( "/var/log/messages" )
+else if ( -r "/var/adm/messages" ) then
+    set messages_log = ( "/var/adm/messages" )
+endif
+
+if ( -z "$messages_log" ) then
+    echo ""
+else
+    alias mess 	'clear ; sudo less +F /var/log/messages'
+endif
+

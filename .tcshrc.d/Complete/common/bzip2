@@ -1,0 +1,1 @@
+complete bzip2	'n/-9/f:^*.bz2/' 'n/-d/f:*.bz2/'

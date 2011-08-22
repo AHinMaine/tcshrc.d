@@ -1,0 +1,8 @@
+set _SMART = ( `which smart` ) >& /dev/null
+if ( $? != 0 || ! -x "${_SMART}" ) unset _SMART
+
+if ( $?_SMART ) then
+    alias smart 'sudo nice -20 smart'
+endif
+
+if ( $?_SMART ) unset _SMART
