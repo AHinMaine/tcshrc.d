@@ -1,0 +1,3 @@
+if ( -f $HOME/.NCURSES_NO_UTF8_ACS ) then
+    setenv NCURSES_NO_UTF8_ACS 1
+endif

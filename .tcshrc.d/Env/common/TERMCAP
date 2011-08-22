@@ -1,0 +1,5 @@
+if ( $?term ) then
+    if ($term == "screen" || $term == "screen.linux" ) then
+        unsetenv TERMCAP
+    endif
+endif

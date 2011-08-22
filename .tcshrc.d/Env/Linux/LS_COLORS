@@ -1,0 +1,17 @@
+
+## Standard aliases - convenience
+# Color syntax
+
+unsetenv LS_COLORS
+if ( -r "${HOME}/.dir_colors" ) then
+    eval `dircolors -c ${HOME}/.dir_colors`
+else if ( -r "/etc/DIR_COLORS" ) then
+    eval `dircolors -c /etc/DIR_COLORS`
+else
+    eval `dircolors -c`
+endif
+
+if ( $?LS_COLORS ) then
+    alias ls 	'ls --color=always'
+endif
+

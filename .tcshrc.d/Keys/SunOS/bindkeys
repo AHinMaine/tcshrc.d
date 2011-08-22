@@ -1,0 +1,5 @@
+
+# F12 : do a ala-csh completion.
+#bindkey    ^[[24~  complete-word-raw
+#bindkey -v
+

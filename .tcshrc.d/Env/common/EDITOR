@@ -1,0 +1,4 @@
+if ( -x "${TCSHDIR}/bin/editor" ) then
+    setenv EDITOR "${TCSHDIR}/bin/.editor"
+    setenv VISUAL "${EDITOR}"
+endif

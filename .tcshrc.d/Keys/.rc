@@ -1,0 +1,105 @@
+if ( $?isInteractive ) then
+
+    set myDir = ( "${TCSHDIR}/Keys" )
+
+    cd ${myDir}
+
+    if ( $?noglob ) then
+        set noglobON = 1
+    endif
+
+    # {{{ common key bindings
+
+    if ( -d "common" && -r "common" ) then
+
+        if ( $?noglob ) then
+            unset noglob
+        endif
+
+        set CommonBindkeyFiles = ( common/* )
+
+        if ( $?noglobON ) then
+            set noglob
+        endif
+
+    endif
+
+    if ( $?CommonBindkeyFiles ) then
+        set BindkeyFiles = ( "${CommonBindkeyFiles}" )
+    else
+        set BindkeyFiles
+    endif
+
+    # }}}
+
+    # {{{ os specific key bindings
+    # 
+    # Read in the filenames containing key bindings specific to the current
+    # operating system
+    #
+    if ( $?tcshOS && -d "${tcshOS}" && -r "${tcshOS}" ) then
+
+        if ( $?noglob ) then
+            unset noglob
+        endif
+
+        set osBindkeyFiles = ( ${tcshOS}/* )
+
+        if ( $?noglobON ) then
+            set noglob
+        endif
+
+    endif
+
+    if ( $?osBindkeyFiles ) then
+        set -l BindkeyFiles = ( ${osBindkeyFiles} ${BindkeyFiles} )
+    endif
+
+    if ( $?debugON ) then
+        echo "BindkeyFiles = ${BindkeyFiles}"
+    endif
+
+    # }}}
+
+    # {{{ iterate Bindkey files
+
+    if ( $?BindkeyFiles ) then
+
+        foreach curBindkeyFile ( $BindkeyFiles )
+
+            if ( $?debugON ) then
+                echo curBindkeyFile: $curBindkeyFile
+            endif
+
+            if ( -r ${curBindkeyFile} ) then
+
+                if ( -s ${curBindkeyFile} ) then
+                    source ${curBindkeyFile}
+                endif
+
+            endif
+
+        end
+
+    else
+        echo "ERROR: No key binding files found"
+    endif
+
+    # }}}
+
+    cd -
+
+    if ( $?noglobON ) then
+        set noglob
+    endif
+
+    if ( $?CommonBindkeyFiles ) unset CommonBindkeyFiles
+    if ( $?osBindkeyFiles     ) unset osBindkeyFiles
+    if ( $?curBindkeyFile     ) unset curBindkeyFile
+    if ( $?BindkeyFiles       ) unset BindkeyFiles
+    if ( $?myDir              ) unset myDir
+
+endif
+
+# vim: ft=tcsh et ts=4 sts=4 sw=4
+

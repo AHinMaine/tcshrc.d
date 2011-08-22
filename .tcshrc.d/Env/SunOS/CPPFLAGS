@@ -1,0 +1,1 @@
+setenv CPPFLAGS "-I/usr/local/include -I/usr/local/ssl/include -I/usr/local/BerkeleyDB.4.3/include -I/usr/local/apr/include/apr-1"

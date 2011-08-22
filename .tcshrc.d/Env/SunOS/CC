@@ -1,0 +1,3 @@
+if ( -x "/usr/local/bin/gcc" ) then
+    setenv CC /usr/local/bin/gcc
+endif

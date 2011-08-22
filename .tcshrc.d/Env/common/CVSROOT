@@ -1,0 +1,7 @@
+setenv CVSROOT ':pserver:username@cvs.example.com:/cvs'
+
+#setenv CVSROOT :ext:username@server3.example.com:/cvs
+#
+#setenv CVS_RSH ssh
+
+

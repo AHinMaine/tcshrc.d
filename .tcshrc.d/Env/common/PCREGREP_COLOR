@@ -1,0 +1,8 @@
+set _PCREGREP = ( `which pcregrep` ) >& /dev/null
+if ( $? != 0 || ! -x "${_PCREGREP}" ) unset _PCREGREP
+
+if ( $?_PCREGREP ) then
+    setenv PCREGREP_COLOR '01;47;31;07'
+endif
+
+if ( $?_PCREGREP ) unset _PCREGREP

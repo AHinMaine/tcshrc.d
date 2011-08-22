@@ -1,0 +1,1 @@
+setenv LDFLAGS "-L/usr/local/lib -L/usr/local/ssl/lib -L/usr/local/BerkeleyDB.4.3/lib -L/usr/lib"

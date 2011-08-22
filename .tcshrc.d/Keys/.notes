@@ -1,0 +1,412 @@
+
+# {{{ Standard key bindings
+##  "^@"           ->  is undefined
+##  "^A"           ->  beginning-of-line
+##  "^B"           ->  backward-char
+##  "^C"           ->  tty-sigintr
+##  "^D"           ->  list-or-eof
+##  "^E"           ->  end-of-line
+##  "^F"           ->  forward-char
+##  "^G"           ->  list-glob
+##  "^H"           ->  backward-delete-char
+##  "^I"           ->  complete-word
+##  "^J"           ->  newline
+##  "^K"           ->  kill-line
+##  "^L"           ->  clear-screen
+##  "^M"           ->  newline
+##  "^N"           ->  down-history
+##  "^O"           ->  tty-flush-output
+##  "^P"           ->  up-history
+##  "^Q"           ->  tty-start-output
+##  "^R"           ->  redisplay
+##  "^S"           ->  tty-stop-output
+##  "^T"           ->  transpose-chars
+##  "^U"           ->  backward-kill-line
+##  "^V"           ->  quoted-insert
+##  "^W"           ->  backward-delete-word
+##  "^X"           ->  expand-line
+##  "^Y"           ->  tty-dsusp
+##  "^Z"           ->  tty-sigtsusp
+##  "^["           ->  vi-cmd-mode
+##  "^\"           ->  tty-sigquit
+##  " "  to "~"    ->  self-insert-command
+##  "^?"           ->  backward-delete-char
+##  " " to "ÿ"   ->  self-insert-command
+##  Alternative key bindings
+##  "^@"           ->  is undefined
+##  "^A"           ->  beginning-of-line
+##  "^B"           ->  is undefined
+##  "^C"           ->  tty-sigintr
+##  "^D"           ->  list-choices
+##  "^E"           ->  end-of-line
+##  "^F"           ->  is undefined
+##  "^G"           ->  list-glob
+##  "^H"           ->  backward-char
+##  "^I"           ->  vi-cmd-mode-complete
+##  "^J"           ->  newline
+##  "^K"           ->  run-help
+##  "^L"           ->  clear-screen
+##  "^M"           ->  newline
+##  "^N"           ->  down-history
+##  "^O"           ->  tty-flush-output
+##  "^P"           ->  up-history
+##  "^Q"           ->  tty-start-output
+##  "^R"           ->  redisplay
+##  "^S"           ->  tty-stop-output
+##  "^T"           ->  is undefined
+##  "^U"           ->  backward-kill-line
+##  "^V"           ->  is undefined
+##  "^W"           ->  backward-delete-word
+##  "^X"           ->  expand-line
+##  "^["           ->  sequence-lead-in
+##  "^\"           ->  tty-sigquit
+##  " "            ->  forward-char
+##  "!"            ->  expand-history
+##  "$"            ->  end-of-line
+##  "*"            ->  expand-glob
+##  "+"            ->  down-history
+##  ","            ->  vi-repeat-char-back
+##  "-"            ->  up-history
+##  "."            ->  is undefined
+##  "/"            ->  vi-search-fwd
+##  "0"            ->  vi-zero
+##  "1"  to "9"    ->  digit-argument
+##  ":"            ->  is undefined
+##  ";"            ->  vi-repeat-char-fwd
+##  "?"            ->  vi-search-back
+##  "@"            ->  is undefined
+##  "A"            ->  vi-add-at-eol
+##  "B"            ->  vi-word-back
+##  "C"            ->  change-till-end-of-line
+##  "D"            ->  kill-line
+##  "E"            ->  vi-endword
+##  "F"            ->  vi-char-back
+##  "I"            ->  vi-insert-at-bol
+##  "J"            ->  history-search-forward
+##  "K"            ->  history-search-backward
+##  "N"            ->  vi-repeat-search-back
+##  "O"            ->  sequence-lead-in
+##  "R"            ->  vi-replace-mode
+##  "S"            ->  vi-substitute-line
+##  "T"            ->  vi-charto-back
+##  "U"            ->  is undefined
+##  "V"            ->  expand-variables
+##  "W"            ->  vi-word-fwd
+##  "X"            ->  backward-delete-char
+##  "["            ->  sequence-lead-in
+##  "\^"           ->  beginning-of-line
+##  "a"            ->  vi-add
+##  "b"            ->  backward-word
+##  "c"            ->  vi-chg-meta
+##  "d"            ->  vi-delmeta
+##  "e"            ->  vi-eword
+##  "f"            ->  vi-char-fwd
+##  "g"            ->  is undefined
+##  "h"            ->  backward-char
+##  "i"            ->  vi-insert
+##  "j"            ->  down-history
+##  "k"            ->  up-history
+##  "l"            ->  forward-char
+##  "m"            ->  is undefined
+##  "n"            ->  vi-repeat-search-fwd
+##  "r"            ->  vi-replace-char
+##  "s"            ->  vi-substitute-char
+##  "t"            ->  vi-charto-fwd
+##  "u"            ->  vi-undo
+##  "v"            ->  expand-variables
+##  "w"            ->  vi-beginning-of-next-word
+##  "x"            ->  delete-char-or-eof
+##  "~"            ->  change-case
+##  "^?"           ->  backward-delete-char
+##  "¿"           ->  run-help
+##  "Ï"           ->  sequence-lead-in
+##  "Û"           ->  sequence-lead-in
+##  Multi-character bindings
+##  "^[[A"         -> up-history
+##  "^[[B"         -> down-history
+##  "^[[C"         -> forward-char
+##  "^[[D"         -> backward-char
+##  "^[[H"         -> beginning-of-line
+##  "^[[F"         -> end-of-line
+##  "^[[1~"        -> beginning-of-line
+##  "^[[4~"        -> end-of-line
+##  "^[OA"         -> up-history
+##  "^[OB"         -> down-history
+##  "^[OC"         -> forward-char
+##  "^[OD"         -> backward-char
+##  "^[OH"         -> beginning-of-line
+##  "^[OF"         -> end-of-line
+##  "^[?"          -> run-help
+##  "[A"           -> up-history
+##  "[B"           -> down-history
+##  "[C"           -> forward-char
+##  "[D"           -> backward-char
+##  "[H"           -> beginning-of-line
+##  "[F"           -> end-of-line
+##  "OA"           -> up-history
+##  "OB"           -> down-history
+##  "OC"           -> forward-char
+##  "OD"           -> backward-char
+##  "OH"           -> beginning-of-line
+##  "OF"           -> end-of-line
+##  Arrow key bindings
+##  down           -> down-history
+##  up             -> up-history
+##  left           -> backward-char
+##  right          -> forward-char
+##  home           -> beginning-of-line
+##  end            -> end-of-line
+##  
+# }}}
+
+# {{{ definitions
+#
+#
+
+##   backward-char
+##             Move back a character
+##   backward-delete-char
+##             Delete the character behind cursor
+##   backward-delete-word
+##             Cut from beginning of current word to cursor - saved in cut buffer
+##   backward-kill-line
+##             Cut from beginning of line to cursor - save in cut buffer
+##   backward-word
+##             Move to beginning of current word
+##   beginning-of-line
+##             Move to beginning of line
+##   capitalize-word
+##             Capitalize the characters from cursor to end of current word
+##   change-case
+##             Vi change case of character under cursor and advance one character
+##   change-till-end-of-line
+##             Vi change to end of line
+##   clear-screen
+##             Clear screen leaving current line on top
+##   complete-word
+##             Complete current word
+##   complete-word-fwd
+##             Tab forward through files
+##   complete-word-back
+##             Tab backward through files
+##   complete-word-raw
+##             Complete current word ignoring programmable completions
+##   copy-prev-word
+##             Copy current word to cursor
+##   copy-region-as-kill
+##             Copy area between mark and cursor to cut buffer
+##   dabbrev-expand
+##             Expand to preceding word for which this is a prefix
+##   delete-char
+##             Delete character under cursor
+##   delete-char-or-eof
+##             Delete character under cursor or signal end of file on an empty line
+##   delete-char-or-list
+##             Delete character under cursor or list completions if at end of line
+##   delete-char-or-list-or-eof
+##             Delete character under cursor, list completions or signal end of file
+##   delete-word
+##             Cut from cursor to end of current word - save in cut buffer
+##   digit
+##             Adds to argument if started or enters digit
+##   digit-argument
+##             Digit that starts argument
+##   down-history
+##             Move to next history line
+##   downcase-word
+##             Lowercase the characters from cursor to end of current word
+##   end-of-file
+##             Indicate end of file
+##   end-of-line
+##             Move cursor to end of line
+##   exchange-point-and-mark
+##             Exchange the cursor and mark
+##   expand-glob
+##             Expand file name wildcards
+##   expand-history
+##             Expand history escapes
+##   expand-line
+##             Expand the history escapes in a line
+##   expand-variables
+##             Expand variables
+##   forward-char
+##             Move forward one character
+##   forward-word
+##             Move forward to end of current word
+##   gosmacs-transpose-chars
+##             Exchange the two characters before the cursor
+##   history-search-backward
+##             Search in history backward for line beginning as current
+##   history-search-forward
+##             Search in history forward for line beginning as current
+##   insert-last-word
+##             Insert last item of previous command
+##   i-search-fwd
+##             Incremental search forward
+##   i-search-back
+##             Incremental search backward
+##   keyboard-quit
+##             Clear line
+##   kill-line
+##             Cut to end of line and save in cut buffer
+##   kill-region
+##             Cut area between mark and cursor and save in cut buffer
+##   kill-whole-line
+##             Cut the entire line and save in cut buffer
+##   list-choices
+##             List choices for completion
+##   list-choices-raw
+##             List choices for completion overriding programmable completion
+##   list-glob
+##             List file name wildcard matches
+##   list-or-eof
+##             List choices for completion or indicate end of file if empty line
+##   load-average
+##             Display load average and current process status
+##   magic-space
+##             Expand history escapes and insert a space
+##   newline
+##             Execute command
+##   normalize-path
+##             Expand pathnames, eliminating leading .'s and ..'s
+##   normalize-command
+##             Expand commands to the resulting pathname or alias
+##   overwrite-mode
+##             Switch from insert to overwrite mode or vice versa
+##   prefix-meta
+##             Add 8th bit to next character typed
+##   quoted-insert
+##             Add the next character typed to the line verbatim
+##   redisplay
+##             Redisplay everything
+##   run-fg-editor
+##             Restart stopped editor
+##   run-help
+##             Look for help on current command
+##   self-insert-command
+##             This character is added to the line
+##   sequence-lead-in
+##             This character is the first in a character sequence
+##   set-mark-command
+##             Set the mark at cursor
+##   spell-word
+##             Correct the spelling of current word
+##   spell-line
+##             Correct the spelling of entire line
+##   stuff-char
+##             Send character to tty in cooked mode
+##   toggle-literal-history
+##             Toggle between literal and lexical current history line
+##   transpose-chars
+##             Exchange the character to the left of the cursor with the one under
+##   transpose-gosling
+##             Exchange the two characters before the cursor
+##   tty-dsusp
+##             Tty delayed suspend character
+##   tty-flush-output
+##             Tty flush output character
+##   tty-sigintr
+##             Tty interrupt character
+##   tty-sigquit
+##             Tty quit character
+##   tty-sigtsusp
+##             Tty suspend character
+##   tty-start-output
+##             Tty allow output character
+##   tty-stop-output
+##             Tty disallow output character
+##   undefined-key
+##             Indicates unbound character
+##   universal-argument
+##             Emacs universal argument (argument times 4)
+##   up-history
+##             Move to previous history line
+##   upcase-word
+##             Uppercase the characters from cursor to end of current word
+##   vi-beginning-of-next-word
+##             Vi goto the beginning of next word
+##   vi-add
+##             Vi enter insert mode after the cursor
+##   vi-add-at-eol
+##             Vi enter insert mode at end of line
+##   vi-chg-case
+##             Vi change case of character under cursor and advance one character
+##   vi-chg-meta
+##             Vi change prefix command
+##   vi-chg-to-eol
+##             Vi change to end of line
+##   vi-cmd-mode
+##             Enter vi command mode (use alternative key bindings)
+##   vi-cmd-mode-complete
+##             Vi command mode complete current word
+##   vi-delprev
+##             Vi move to previous character (backspace)
+##   vi-delmeta
+##             Vi delete prefix command
+##   vi-endword
+##             Vi move to the end of the current space delimited word
+##   vi-eword
+##             Vi move to the end of the current word
+##   vi-char-back
+##             Vi move to the character specified backward
+##   vi-char-fwd
+##             Vi move to the character specified forward
+##   vi-charto-back
+##             Vi move up to the character specified backward
+##   vi-charto-fwd
+##             Vi move up to the character specified forward
+##   vi-insert
+##             Enter vi insert mode
+##   vi-insert-at-bol
+##             Enter vi insert mode at beginning of line
+##   vi-repeat-char-fwd
+##             Vi repeat current character search in the same search direction
+##   vi-repeat-char-back
+##             Vi repeat current character search in the opposite search direction
+##   vi-repeat-search-fwd
+##             Vi repeat current search in the same search direction
+##   vi-repeat-search-back
+##             Vi repeat current search in the opposite search direction
+##   vi-replace-char
+##             Vi replace character under the cursor with the next character typed
+##   vi-replace-mode
+##             Vi replace mode
+##   vi-search-back
+##             Vi search history backward
+##   vi-search-fwd
+##             Vi search history forward
+##   vi-substitute-char
+##             Vi replace character under the cursor and enter insert mode
+##   vi-substitute-line
+##             Vi replace entire line
+##   vi-word-back
+##             Vi move to the previous word
+##   vi-word-fwd
+##             Vi move to the next word
+##   vi-undo
+##             Vi undo last change
+##   vi-zero
+##             Vi goto the beginning of line
+##   which-command
+##             Perform which of current command
+##   yank
+##             Paste cut buffer at cursor position
+##   yank-pop
+##             Replace just-yanked text with yank from earlier kill
+##   e_copy_to_clipboard
+##             (WIN32 only) Copy cut buffer to system clipboard
+##   e_paste_from_clipboard
+##             (WIN32 only) Paste clipboard buffer at cursor position
+##   e_dosify_next
+##             (WIN32 only) Convert each '/' in next word to '\\'
+##   e_dosify_prev
+##             (WIN32 only) Convert each '/' in previous word to '\\'
+##   e_page_up
+##             (WIN32 only) Page visible console window up
+##   e_page_down
+##             (WIN32 only) Page visible console window down
+##   
+
+# }}}
+
+

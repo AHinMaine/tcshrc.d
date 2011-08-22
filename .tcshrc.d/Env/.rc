@@ -1,0 +1,100 @@
+set myDir = ( "${TCSHDIR}/Env" )
+
+cd ${myDir}
+
+if ( $?noglob ) then
+    set noglobON = 1
+endif
+
+
+# {{{ common environment variables
+
+if ( -d "common" && -r "common" ) then
+
+    if ( $?noglob ) then
+        unset noglob
+    endif
+
+    set CommonEnvFiles = ( common/* )
+
+    if ( $?noglobON ) then
+        set noglob
+    endif
+
+endif
+
+if ( $?CommonEnvFiles ) then
+    set EnvFiles = ( "${CommonEnvFiles}" )
+else
+    set EnvFiles
+endif
+
+# }}}
+
+# {{{ os specific environment variables
+# 
+# Read in the filenames containing environment variables
+# specific to the current operating system
+#
+if ( $?tcshOS && -d "${tcshOS}" && -r "${tcshOS}" ) then
+
+    if ( $?noglob ) then
+        unset noglob
+    endif
+
+    set osEnvFiles = ( ${tcshOS}/* )
+
+    if ( $?noglobON ) then
+        set noglob
+    endif
+
+endif
+
+if ( $?osEnvFiles ) then
+    set -l EnvFiles = ( ${osEnvFiles} ${EnvFiles} )
+endif
+
+if ( $?debugON ) then
+    echo "EnvFiles = ${EnvFiles}"
+endif
+
+# }}}
+
+# {{{ iterate environment files
+
+if ( $?EnvFiles ) then
+
+    foreach curEnvFile ( $EnvFiles )
+
+        if ( $?debugON ) then
+            echo curEnvFile: $curEnvFile
+        endif
+
+        if ( -r ${curEnvFile} ) then
+            if ( -s ${curEnvFile} ) then
+                source ${curEnvFile}
+            endif
+        endif
+
+    end
+
+else
+    echo "ERROR: No environment files found"
+endif
+
+# }}}
+
+if ( $?noglobON ) then
+    set noglob
+endif
+
+if ( $?CommonEnvFiles ) unset CommonEnvFiles
+if ( $?osEnvFiles     ) unset osEnvFiles
+if ( $?curEnvFile     ) unset curEnvFile
+if ( $?EnvFiles       ) unset EnvFiles
+if ( $?myDir          ) unset myDir
+
+cd -
+
+# vim: ft=tcsh et ts=4 sts=4 sw=4
+
