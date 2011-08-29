@@ -11,3 +11,5 @@ if ( $?_TCPDUMP ) then
 endif
 
 if ( $?_TCPDUMP ) unset _TCPDUMP
+
+# vim: set et ff=unix ft=tcsh sts=4 sw=4 ts=4 : 
