@@ -76,6 +76,10 @@ $TCSHDIR/
   + etc/
 
 
+The OS specific configs expect to reside in a directory matching the name
+from the output of uname -s.
+
+
 
 ---+ ENVIRONMENT VARIABLES
 
@@ -160,5 +164,25 @@ To more selectively distribute to a specific host:
 (The tcshrc.dist.sh script is a bit over-engineered.  Use -h to read the help.)
 
 
+If you want to distribute files by tunneling through an intermediary host,
+one way is to put an entry like the following in your ~/.ssh/config file.
 
+    Host server1.example.com server2.example.com
+        ProxyCommand                ssh server3.example.com /usr/bin/nc -w 999 %h 22
+        User                        <your username>
+        Compression                 yes
+        CompressionLevel            6
+        PubkeyAuthentication        yes
+        PasswordAuthentication      yes
+        AddressFamily               inet
+        IdentityFile                ~/.ssh/id_rsa
+        Port                        22
+        Protocol                    2
+        EscapeChar                  none
+        ServerAliveInterval         590
+
+This will make it so when you try to distribute files to server1.example.com or
+server2.example.com, the connection will be proxied through server3 by using a bit
+of netcat creativity.  See the ssh_config(5) man page for more ssh options that 
+can be used.
 
