@@ -9,7 +9,7 @@ else
     setenv TCSHDIR ${TCSHDIR}
 endif
 
-set _UNAME = ( `which tcpdump` ) >& /dev/null
+set _UNAME = ( `which uname` ) >& /dev/null
 if ( $? != 0 || ! -x "${_UNAME}" ) unset _UNAME
 
 if ( $?_UNAME ) then
