@@ -3,7 +3,13 @@ if ( $? != 0 || ! -x "${_LESSBIN}" ) unset _LESSBIN
 
 if ( $?_LESSBIN ) then
     setenv PAGER $_LESSBIN
+    setenv LESSDEFAULT '-niSRwX -P[?pB%pB\% of .?f%f:STDIN.]?lB line %lb.?L of %L.?B (%B bytes). (EDITOR\:?E%E:default). > '
     setenv LESS '-iwX -P[?pB%pB\% of .?f%f:STDIN.]?lB line %lb.?L of %L.?B (%B bytes). (EDITOR\:?E%E:default). > '
 endif
 
+if ( -r "${HOME}/.less" ) then
+    setenv LESSKEY ${HOME}/.less                                                                                                                          
+endif
+
 if ( $?_LESSBIN ) unset _LESSBIN
+if ( $?LESSOPEN ) unsetenv LESSOPEN
