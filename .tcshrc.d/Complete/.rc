@@ -5,21 +5,19 @@ if ( $?isInteractive ) then
     # Completions are skipped if we're not running in a terminal
     #
 
-    cd ${myDir}
-
     if ( $?noglob ) then
         set noglobON = 1
     endif
 
     # {{{ common completes
 
-    if ( -d "common" && -r "common" ) then
+    if ( -d "${myDir}/common" && -r "${myDir}/common" ) then
 
         if ( $?noglob ) then
             unset noglob
         endif
 
-        set CommonCompleteFiles = ( common/* )
+        set CommonCompleteFiles = ( ${myDir}/common/* )
 
         if ( $?noglobON ) then
             set noglob
@@ -40,13 +38,13 @@ if ( $?isInteractive ) then
     # Read in the filenames containing completions specific
     # to the current operating system
     #
-    if ( $?tcshOS && -d "${tcshOS}" && -r "${tcshOS}" ) then
+    if ( $?tcshOS && -d "${myDir}/${tcshOS}" && -r "${myDir}/${tcshOS}" ) then
 
         if ( $?noglob ) then
             unset noglob
         endif
 
-        set osCompleteFiles = ( ${tcshOS}/* )
+        set osCompleteFiles = ( ${myDir}/${tcshOS}/* )
 
         if ( $?noglobON ) then
             set noglob
@@ -100,8 +98,6 @@ if ( $?isInteractive ) then
     if ( $?noglobON ) then
         set noglob
     endif
-
-    cd -
 
     if ( $?CommonCompleteFiles ) unset CommonCompleteFiles
     if ( $?osCompleteFiles     ) unset osCompleteFiles

@@ -1,21 +1,18 @@
 set myDir = ( "${TCSHDIR}/Env" )
 
-cd ${myDir}
-
 if ( $?noglob ) then
     set noglobON = 1
 endif
 
-
 # {{{ common environment variables
 
-if ( -d "common" && -r "common" ) then
+if ( -d "${myDir}/common" && -r "${myDir}/common" ) then
 
     if ( $?noglob ) then
         unset noglob
     endif
 
-    set CommonEnvFiles = ( common/* )
+    set CommonEnvFiles = ( ${myDir}/common/* )
 
     if ( $?noglobON ) then
         set noglob
@@ -36,13 +33,13 @@ endif
 # Read in the filenames containing environment variables
 # specific to the current operating system
 #
-if ( $?tcshOS && -d "${tcshOS}" && -r "${tcshOS}" ) then
+if ( $?tcshOS && -d "${myDir}/${tcshOS}" && -r "${myDir}/${tcshOS}" ) then
 
     if ( $?noglob ) then
         unset noglob
     endif
 
-    set osEnvFiles = ( ${tcshOS}/* )
+    set osEnvFiles = ( ${myDir}/${tcshOS}/* )
 
     if ( $?noglobON ) then
         set noglob
@@ -93,8 +90,6 @@ if ( $?osEnvFiles     ) unset osEnvFiles
 if ( $?curEnvFile     ) unset curEnvFile
 if ( $?EnvFiles       ) unset EnvFiles
 if ( $?myDir          ) unset myDir
-
-cd -
 
 # vim: ft=tcsh et ts=4 sts=4 sw=4
 

@@ -2,21 +2,19 @@ if ( $?isInteractive ) then
 
     set myDir = ( "${TCSHDIR}/Prompts" )
 
-    cd ${myDir}
-
     if ( $?noglob ) then
         set noglobON = 1
     endif
 
     # {{{ common prompts
 
-    if ( -d "common" && -r "common" ) then
+    if ( -d "${myDir}/common" && -r "${myDir}/common" ) then
 
         if ( $?noglob ) then
             unset noglob
         endif
 
-        set CommonPromptFiles = ( common/* )
+        set CommonPromptFiles = ( ${myDir}/common/* )
 
         if ( $?noglobON ) then
             set noglob
@@ -37,13 +35,13 @@ if ( $?isInteractive ) then
     # Read in the filenames containing prompts specific to the
     # current operating system
     #
-    if ( $?tcshOS && -d "${tcshOS}" && -r "${tcshOS}" ) then
+    if ( $?tcshOS && -d "${myDir}/${tcshOS}" && -r "${myDir}/${tcshOS}" ) then
 
         if ( $?noglob ) then
             unset noglob
         endif
 
-        set osPromptFiles = ( ${tcshOS}/* )
+        set osPromptFiles = ( ${myDir}/${tcshOS}/* )
 
         if ( $?noglobON ) then
             set noglob
@@ -86,8 +84,6 @@ if ( $?isInteractive ) then
     endif
 
     # }}}
-
-    cd -
 
     if ( $?noglobON ) then
         set noglob

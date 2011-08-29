@@ -1,7 +1,5 @@
 set myDir = ( "${TCSHDIR}/Paths" )
 
-cd ${myDir}
-
 
 if ( $?debugON ) then
     echo "path at beginning = ${path}"
@@ -24,7 +22,7 @@ endif
 
 # {{{ common paths
 
-if ( -d "common" && -r "common" ) then
+if ( -d "${myDir}/common" && -r "${myDir}/common" ) then
 
     if ( $?noglob ) then
         unset noglob
@@ -34,7 +32,7 @@ if ( -d "common" && -r "common" ) then
         echo "Fetching common path files begin..."
     endif
 
-    set CommonPathFiles = ( common/* )
+    set CommonPathFiles = ( ${myDir}/common/* )
 
     if ( $?debugON ) then
         echo "Fetching common path files end..."
@@ -60,7 +58,7 @@ endif
 # Read in the filenames containing paths specific to the
 # current operating system
 #
-if ( $?tcshOS && -d "${tcshOS}" && -r "${tcshOS}" ) then
+if ( $?tcshOS && -d "${myDir}/${tcshOS}" && -r "${myDir}/${tcshOS}" ) then
 
     if ( $?noglob ) then
         unset noglob
@@ -72,7 +70,7 @@ if ( $?tcshOS && -d "${tcshOS}" && -r "${tcshOS}" ) then
         pwd
     endif
 
-    set osPathFiles = ( ${tcshOS}/* )
+    set osPathFiles = ( ${myDir}/${tcshOS}/* )
 
     if ( $?debugON ) then
         echo "Fetching os path files end..."
@@ -173,8 +171,8 @@ if ( $?noglob ) then
     unset noglob
 endif
 
-if ( -r "common/.manpath" ) then
-    foreach testmanpath ( "`cat common/.manpath`" )
+if ( -r "${myDir}/common/.manpath" ) then
+    foreach testmanpath ( "`cat ${myDir}/common/.manpath`" )
         if ( -d "${testmanpath}" ) then
             if ( ! ${?manpath} ) then
                 set manpath = ( "${testmanpath}" )
@@ -185,8 +183,8 @@ if ( -r "common/.manpath" ) then
     end
 endif
 
-if ( -r "${tcshOS}/.manpath" ) then
-    foreach testmanpath ( "`cat ${tcshOS}/.manpath`" )
+if ( -r "${myDir}/${tcshOS}/.manpath" ) then
+    foreach testmanpath ( "`cat ${myDir}/${tcshOS}/.manpath`" )
         if ( -d "${testmanpath}" ) then
             if ( ! ${?manpath} ) then
                 set manpath = ( "${testmanpath}" )
@@ -208,13 +206,14 @@ endif
 
 # }}}
 
-if ( -r ".source" ) then
+if ( -r "${myDir}/.source" ) then
 
     if ( $?debugON ) then
         echo "found .source file"
     endif
 
-    source .source
+    source ${myDir}/.source
+
 endif
 
 if ( -d ${TCSHDIR}/bin ) then
@@ -232,8 +231,6 @@ if ( $?PathFiles       ) unset PathFiles
 if ( $?myDir           ) unset myDir
 if ( $?pathFileLine    ) unset pathFileLine
 if ( $?testmanpath     ) unset testmanpath
-
-cd -
 
 exit
 

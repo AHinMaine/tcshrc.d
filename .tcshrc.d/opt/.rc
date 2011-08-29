@@ -1,7 +1,5 @@
 set myDir = ( "${TCSHDIR}/opt" )
 
-cd ${myDir}
-
 if ( $?noglob ) then
     set noglobON = 1
 endif
@@ -12,7 +10,7 @@ if ( $?noglob ) then
     unset noglob
 endif
 
-set optFiles = ( * )
+set optFiles = ( ${myDir}/* )
 
 if ( $?noglobON ) then
     set noglob
@@ -53,8 +51,6 @@ endif
 if ( $?optFiles         ) unset optFiles
 if ( $?curoptFile       ) unset curoptFile
 if ( $?myDir            ) unset myDir
-
-cd -
 
 # vim: set et ft=tcsh sts=4 sw=4 ts=4 : 
 
