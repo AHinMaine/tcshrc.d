@@ -200,6 +200,10 @@ for DESTHOST in ${_DESTINATIONS} ; do
         fi
     fi
 
+    if [ -z "${_DESTDIR}" ] ; then
+        _DESTDIR="\${HOME}"
+    fi
+
     [ -n "${VERBOSE}" ] &&
         echo "FILESPEC = " &&
         echo ${FILESPEC} | xargs echo -n filenames: &&
