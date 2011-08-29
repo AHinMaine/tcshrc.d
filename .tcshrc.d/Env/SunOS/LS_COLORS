@@ -2,10 +2,10 @@ set _GDIRCOLORS = ( `which gdircolors` ) >& /dev/null
 if ( $? != 0 || ! -x "${_GDIRCOLORS}" ) unset _GDIRCOLORS
 
 
-if ( $?_GDIRCOLORS && -f "${tcshHOME}/.dir_colors" ) then
+if ( $?_GDIRCOLORS && -f "${userHOME}/.dir_colors" ) then
 
     unsetenv LS_COLORS
-    eval `gdircolors -c ${tcshHOME}/.dir_colors`
+    eval `gdircolors -c ${userHOME}/.dir_colors`
 
 else
 
