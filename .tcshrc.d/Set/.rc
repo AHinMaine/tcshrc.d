@@ -1,4 +1,8 @@
+onintr -
+
 set myDir = ( "${TCSHDIR}/Set" )
+
+cd ${myDir}
 
 if ( $?noglob ) then
     set noglobON = 1
@@ -6,7 +10,7 @@ endif
 
 # {{{ common tcsh settings
 
-if ( -d "${myDir}/common" && -r "${myDir}/common" ) then
+if ( -d "common" && -r "common" ) then
 
     if ( $?noglob ) then
         unset noglob
@@ -16,7 +20,7 @@ if ( -d "${myDir}/common" && -r "${myDir}/common" ) then
         echo "Fetching common path files begin..."
     endif
 
-    set CommonSetFiles = ( ${myDir}/common/* )
+    set CommonSetFiles = ( common/* )
 
     if ( $?debugON ) then
         echo "Fetching common path files end..."
@@ -42,7 +46,7 @@ endif
 # Read in the filenames containing tcsh settings specific to
 # the current operating system
 #
-if ( $?tcshOS && -d "${myDir}/${tcshOS}" && -r "${myDir}/${tcshOS}" ) then
+if ( $?tcshOS && -d "${tcshOS}" && -r "${tcshOS}" ) then
 
     if ( $?noglob ) then
         unset noglob
@@ -54,7 +58,7 @@ if ( $?tcshOS && -d "${myDir}/${tcshOS}" && -r "${myDir}/${tcshOS}" ) then
         pwd
     endif
 
-    set osSetFiles = ( ${myDir}/${tcshOS}/* )
+    set osSetFiles = ( ${tcshOS}/* )
 
     if ( $?debugON ) then
         echo "Fetching os path files end..."
@@ -125,6 +129,10 @@ if ( $?curSetFile     ) unset curSetFile
 if ( $?SetFiles       ) unset SetFiles
 if ( $?setter         ) unset setter
 if ( $?myDir          ) unset myDir
+
+cd -
+
+onintr
 
 # vim: ft=tcsh et ts=4 sts=4 sw=4
 

@@ -1,6 +1,10 @@
 if ( $?isInteractive ) then
 
+    onintr -
+
     set myDir = ( "${TCSHDIR}/Keys" )
+
+    cd ${myDir}
 
     if ( $?noglob ) then
         set noglobON = 1
@@ -8,13 +12,13 @@ if ( $?isInteractive ) then
 
     # {{{ common key bindings
 
-    if ( -d "${myDir}/common" && -r "${myDir}/common" ) then
+    if ( -d "common" && -r "common" ) then
 
         if ( $?noglob ) then
             unset noglob
         endif
 
-        set CommonBindkeyFiles = ( ${myDir}/common/* )
+        set CommonBindkeyFiles = ( common/* )
 
         if ( $?noglobON ) then
             set noglob
@@ -35,13 +39,13 @@ if ( $?isInteractive ) then
     # Read in the filenames containing key bindings specific to the current
     # operating system
     #
-    if ( $?tcshOS && -d "${myDir}/${tcshOS}" && -r "${myDir}/${tcshOS}" ) then
+    if ( $?tcshOS && -d "${tcshOS}" && -r "${tcshOS}" ) then
 
         if ( $?noglob ) then
             unset noglob
         endif
 
-        set osBindkeyFiles = ( ${myDir}/${tcshOS}/* )
+        set osBindkeyFiles = ( ${tcshOS}/* )
 
         if ( $?noglobON ) then
             set noglob
@@ -94,6 +98,10 @@ if ( $?isInteractive ) then
     if ( $?curBindkeyFile     ) unset curBindkeyFile
     if ( $?BindkeyFiles       ) unset BindkeyFiles
     if ( $?myDir              ) unset myDir
+
+    cd -
+
+    onintr
 
 endif
 

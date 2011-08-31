@@ -1,6 +1,10 @@
 if ( $?isInteractive ) then
 
+    onintr -
+
     set myDir = ( "${TCSHDIR}/Complete" )
+
+    cd ${myDir}
 
     # Completions are skipped if we're not running in a terminal
     #
@@ -11,13 +15,13 @@ if ( $?isInteractive ) then
 
     # {{{ common completes
 
-    if ( -d "${myDir}/common" && -r "${myDir}/common" ) then
+    if ( -d "common" && -r "common" ) then
 
         if ( $?noglob ) then
             unset noglob
         endif
 
-        set CommonCompleteFiles = ( ${myDir}/common/* )
+        set CommonCompleteFiles = ( common/* )
 
         if ( $?noglobON ) then
             set noglob
@@ -38,13 +42,13 @@ if ( $?isInteractive ) then
     # Read in the filenames containing completions specific
     # to the current operating system
     #
-    if ( $?tcshOS && -d "${myDir}/${tcshOS}" && -r "${myDir}/${tcshOS}" ) then
+    if ( $?tcshOS && -d "${tcshOS}" && -r "${tcshOS}" ) then
 
         if ( $?noglob ) then
             unset noglob
         endif
 
-        set osCompleteFiles = ( ${myDir}/${tcshOS}/* )
+        set osCompleteFiles = ( ${tcshOS}/* )
 
         if ( $?noglobON ) then
             set noglob
@@ -104,6 +108,10 @@ if ( $?isInteractive ) then
     if ( $?curCompleteFile     ) unset curCompleteFile
     if ( $?CompleteFiles       ) unset CompleteFiles
     if ( $?myDir               ) unset myDir
+
+    cd -
+
+    onintr
 
 endif
 

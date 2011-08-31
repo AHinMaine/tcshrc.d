@@ -29,7 +29,7 @@ endif
 
 source $userHOME/.tcshrc.d/tcshrc
 
-if( $?isInteractive ) unset isInteractive
+if ( $?isInteractive ) unset isInteractive
 
 
 # vim: set et ff=unix ft=tcsh sts=4 sw=4 ts=4 : 

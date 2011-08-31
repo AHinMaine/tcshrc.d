@@ -1,6 +1,10 @@
 if ( $?isInteractive ) then
 
+    onintr -
+
     set myDir = ( "${TCSHDIR}/Alias" )
+
+    cd $myDir
 
     if ( $?noglob ) then
         set noglobON = 1
@@ -9,13 +13,13 @@ if ( $?isInteractive ) then
 
     # {{{ common aliases
 
-    if ( -d "${myDir}/common" && -r "${myDir}/common" ) then
+    if ( -d "common" && -r "common" ) then
 
         if ( $?noglob ) then
             unset noglob
         endif
 
-        set CommonAliasFiles = ( ${myDir}/common/* )
+        set CommonAliasFiles = ( common/* )
 
         if ( $?noglobON ) then
             set noglob
@@ -36,13 +40,13 @@ if ( $?isInteractive ) then
     # Read in the filenames containing aliases specific to
     # the current operating system
     #
-    if ( $?tcshOS && -d "${myDir}/${tcshOS}" && -r "${myDir}/${tcshOS}" ) then
+    if ( $?tcshOS && -d "${tcshOS}" && -r "${tcshOS}" ) then
 
         if ( $?noglob ) then
             unset noglob
         endif
 
-        set osAliasFiles = ( ${myDir}/${tcshOS}/* )
+        set osAliasFiles = ( ${tcshOS}/* )
 
         if ( $?noglobON ) then
             set noglob
@@ -93,6 +97,10 @@ if ( $?isInteractive ) then
     if ( $?curAliasFile     ) unset curAliasFile
     if ( $?AliasFiles       ) unset AliasFiles
     if ( $?myDir            ) unset myDir
+
+    cd -
+
+    onintr
 
 endif
 
