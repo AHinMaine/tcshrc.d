@@ -1,6 +1,5 @@
+onintr -
 if ( $?isInteractive ) then
-
-    onintr -
 
     set myDir = ( "${TCSHDIR}/Complete" )
 
@@ -97,8 +96,6 @@ if ( $?isInteractive ) then
 
     # }}}
 
-    endif
-
     if ( $?noglobON ) then
         set noglob
     endif
@@ -111,9 +108,10 @@ if ( $?isInteractive ) then
 
     cd -
 
-    onintr
-
 endif
+
+onintr
+
 
 # vim: ft=tcsh et ts=4 sts=4 sw=4
 

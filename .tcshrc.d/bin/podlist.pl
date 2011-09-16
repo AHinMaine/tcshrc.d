@@ -5,6 +5,7 @@ use warnings;
 
 use Pod::Find qw(pod_find);
 use Getopt::Long;
+use Data::Dumper;
 
 my $opts = {};
 
@@ -16,6 +17,7 @@ if ( defined $ENV{TCSHDIR} && -d $ENV{TCSHDIR} . '/etc' ) {
 
 $opts->{perl}    = 1;
 $opts->{inc}     = 1;
+$opts->{debug}   = 0;
 
 GetOptions( $opts,
                     'podlist=s',
@@ -26,9 +28,12 @@ GetOptions( $opts,
                     #
                     'dirs=s@{,}',
                     'verbose',
+                    'debug!',
                     'perl',
                     'inc',
 );
+
+ddump( 'opts', $opts ) if $opts->{debug};
 
 my %pf_options;
 my $directories = [];
@@ -94,3 +99,12 @@ if ( defined $opts->{xargs} ) {
 
 }
 
+sub ddump {
+
+    $Data::Dumper::Varname = shift;
+
+    print Dumper( @_ );
+
+    return;
+
+}

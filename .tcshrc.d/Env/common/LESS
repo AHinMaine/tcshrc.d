@@ -2,7 +2,7 @@ set _LESSBIN = ( `which less` ) >& /dev/null
 if ( $? != 0 || ! -x "${_LESSBIN}" ) unset _LESSBIN
 
 if ( $?_LESSBIN ) then
-    setenv PAGER $?_LESSBIN
+    setenv PAGER "${_LESSBIN}"
     #setenv LESS '-iwX -P[?pB%pB\% of .?f%f:STDIN.]?lB line %lb.?L of %L.?B (%B bytes). (EDITOR\:?E%E:default). > '
     setenv LESSDEFAULT '-niSRwX -P[?pB%pB\% of .?f%f:STDIN.]?lB line %lb.?L of %L.?B (%B bytes). (EDITOR\:?E%E:default). > '
     setenv LESS "${LESSDEFAULT}"

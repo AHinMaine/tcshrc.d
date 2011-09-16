@@ -1,6 +1,6 @@
-if ( $?isInteractive ) then
+onintr -
 
-    onintr -
+if ( $?isInteractive ) then
 
     set myDir = ( "${TCSHDIR}/Alias" )
 
@@ -100,9 +100,9 @@ if ( $?isInteractive ) then
 
     cd -
 
-    onintr
-
 endif
+
+onintr
 
 # vim: set et ft=tcsh sts=4 sw=4 ts=4 : 
 
