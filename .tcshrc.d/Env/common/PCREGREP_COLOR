@@ -1,4 +1,4 @@
-set _PCREGREP = ( `which pcregrep` ) >& /dev/null
+set _PCREGREP = ( "`which pcregrep`" ) >& /dev/null
 if ( $? != 0 || ! -x "${_PCREGREP}" ) unset _PCREGREP
 
 if ( $?_PCREGREP ) then

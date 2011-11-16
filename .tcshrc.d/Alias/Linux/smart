@@ -1,4 +1,4 @@
-set _SMART = ( `which smart` ) >& /dev/null
+set _SMART = ( "`which smart`" ) >& /dev/null
 if ( $? != 0 || ! -x "${_SMART}" ) unset _SMART
 
 if ( $?_SMART ) then

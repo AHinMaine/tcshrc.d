@@ -1,4 +1,4 @@
-set _ALIGN = ( `which align` ) >& /dev/null
+set _ALIGN = ( "`which align`" ) >& /dev/null
 if ( $? != 0 || ! -x "${_ALIGN}" ) unset _ALIGN
 
 if ( $?_ALIGN ) then

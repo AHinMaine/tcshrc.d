@@ -1,4 +1,4 @@
-set _ZYPPER = ( `which zypper` ) >& /dev/null
+set _ZYPPER = ( "`which zypper`" ) >& /dev/null
 if ( $? != 0 || ! -x "${_ZYPPER}" ) unset _ZYPPER
 
 if ( $?_ZYPPER ) then

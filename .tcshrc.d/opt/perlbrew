@@ -11,7 +11,7 @@ if ( $?isInteractive ) then
 
         source "${env_perlbrew}"
 
-        set _PERLBREW = ( `which perlbrew` ) >& /dev/null
+        set _PERLBREW = ( "`which perlbrew`" ) >& /dev/null
         if ( $? != 0 || ! -x "${_PERLBREW}" ) unset _PERLBREW
 
         if ( $?_PERLBREW ) then
@@ -22,7 +22,7 @@ if ( $?isInteractive ) then
 
     endif
 
-    set _CPANM = ( `which cpanm` ) >& /dev/null
+    set _CPANM = ( "`which cpanm`" ) >& /dev/null
     if ( $? != 0 || ! -x "${_CPANM}" ) unset _CPANM
 
     if ( $?_CPANM ) then

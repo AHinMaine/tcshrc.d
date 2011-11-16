@@ -18,7 +18,7 @@ if ( $?prompt3 ) then
     set isInteractive = 1
 endif
 
-set GETENT = ( `which getent` ) >& /dev/null
+set GETENT = ( "`which getent`" ) >& /dev/null
 if ( $? != 0 || ! -x "${GETENT}" ) unset GETENT
 
 set tcshOS = ( `uname -s` )

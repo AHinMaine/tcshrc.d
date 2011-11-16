@@ -3,7 +3,7 @@
 # -n  means do not resolve names. Makes it faster and lightweight.
 # -i eth0  means only the Ethernet interface. In some distros, the loopback is
 # shown too which clutters the output.
-set _TCPDUMP = ( `which tcpdump` ) >& /dev/null
+set _TCPDUMP = ( "`which tcpdump`" ) >& /dev/null
 if ( $? != 0 || ! -x "${_TCPDUMP}" ) unset _TCPDUMP
 
 if ( $?_TCPDUMP ) then

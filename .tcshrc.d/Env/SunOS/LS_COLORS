@@ -1,4 +1,4 @@
-set _GDIRCOLORS = ( `which gdircolors` ) >& /dev/null
+set _GDIRCOLORS = ( "`which gdircolors`" ) >& /dev/null
 if ( $? != 0 || ! -x "${_GDIRCOLORS}" ) unset _GDIRCOLORS
 
 

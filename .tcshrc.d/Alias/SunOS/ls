@@ -1,4 +1,4 @@
-set _GLS = ( `which gls` ) >& /dev/null
+set _GLS = ( "`which gls`" ) >& /dev/null
 if ( $? != 0 || ! -x "${_GLS}" ) unset _GLS
 
 if ( $?LS_COLORS && $?_GLS ) then

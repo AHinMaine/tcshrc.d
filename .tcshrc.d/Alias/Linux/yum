@@ -1,4 +1,4 @@
-set _YUM = ( `which yum` ) >& /dev/null
+set _YUM = ( "`which yum`" ) >& /dev/null
 if ( $? != 0 || ! -x "${_YUM}" ) unset _YUM
 
 if ( $?_YUM ) then
