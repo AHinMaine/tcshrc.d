@@ -1,0 +1,40 @@
+
+if ( $?isInteractive ) then
+
+    if ( -d /usr/openv ) then
+
+        if ( -d /usr/openv/netbackup/bin          ) set -l path = ( $path /usr/openv/netbackup/bin )
+        if ( -d /usr/openv/volmgr/bin             ) set -l path = ( $path /usr/openv/volmgr/bin )
+        if ( -d /usr/openv/netbackup/bin/admincmd ) set -l path = ( $path /usr/openv/netbackup/bin/admincmd )
+        if ( -d /usr/openv/netbackup/bin/goodies  ) set -l path = ( $path /usr/openv/netbackup/bin/goodies )
+        if ( -d /opt/VRTSvcs/bin                  ) set -l path = ( $path /opt/VRTSvcs/bin )
+
+        if ( -d /usr/openv/man ) then
+            set manpath = ( "${manpath}:/usr/openv/man" )
+            setenv MANPATH $manpath
+            setenv manpath $manpath
+        endif
+
+        if ( -d /usr/openv/netbackup/bin/goodies/man ) then
+            set manpath = ( "${manpath}:/usr/openv/netbackup/bin/goodies/man" )
+            setenv MANPATH $manpath
+            setenv manpath $manpath
+        endif
+
+        if ( -d /usr/openv/java/jre/man ) then
+            set manpath = ( "${manpath}:/usr/openv/java/jre/man" )
+            setenv MANPATH $manpath
+            setenv manpath $manpath
+        endif
+
+        if ( -d /usr/openv/man ) then
+            set manpath = ( "${manpath}:/usr/openv/man" )
+            setenv MANPATH $manpath
+            setenv manpath $manpath
+        endif
+
+    endif
+
+endif
+
+# vim: set et ff=unix ft=tcsh sts=4 sw=4 ts=4 : 
